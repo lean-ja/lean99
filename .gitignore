@@ -1,3 +1,7 @@
+# mdbook
 book
 md/*
-!md/SUMMARY.md
+!md/SUMMARY.md/.lake
+
+# lean project
+.lake
