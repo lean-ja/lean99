@@ -9,3 +9,8 @@ description = "mdbook setup for Lean project"
 [build]
 create-missing = false
 build-dir = "book"
+
+[output.html]
+additional-js = [
+  "assets/blockPlay.js" # Add "Run on Lean4 Playground" button
+]
