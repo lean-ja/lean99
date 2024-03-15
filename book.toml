@@ -12,5 +12,10 @@ build-dir = "book"
 
 [output.html]
 additional-js = [
-  "assets/blockPlay.js" # Add "Run on Lean4 Playground" button
+  # Add "Run on Lean4 Playground" button
+  "assets/blockPlay.js",
+
+  # Improve search functionality
+  "assets/fzf.umd.js",
+  "assets/elasticlunr.js"
 ]
