@@ -2,13 +2,7 @@
 
 0. Install mdbook and Lean.
 
-1. Clone this repository.
-
-```bash
-git clone https://github.com/Seasawher/lean-book.git
-cd lean-book
-git remote remove origin
-```
+1. Clone this repository. Alternatively, select "Use this template" from the GitHub web UI. 
 
 2. Change the directory name `Src` if you want. At the same time, replace `Src` in `lakefile.lean`, `ci.yml`, `deploy.yml` and `filePlay.js`. And run `lake update`.
 
