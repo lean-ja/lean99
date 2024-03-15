@@ -30,3 +30,11 @@ This book uses [import-all](https://github.com/Seasawher/import-all) to automati
 /-! ### Improved Search
 The mdbook does not support searches in languages other than English, but this book does support searches in other languages (e.g. Japanese)!
 -/
+
+/-! ### MathJax
+You can use MathJax in this book. For example, $a^2 + b^2 = c^2$.
+
+$$
+ζ (s) = \sum_{n=1}^{\infty} \frac{1}{n^s}
+$$
+-/
