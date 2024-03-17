@@ -39,10 +39,10 @@ jobs:
           mdbook-version: '0.4.32'
 
       - name: run mk-exercise
-        run: lake exe mk_exercise Src md
+        run: lake exe mk_exercise Src build
 
       - name: run mdgen
-        run: lake exe mdgen md md
+        run: lake exe mdgen build md/build
 
       - name: build by mdbook
         run: mdbook build

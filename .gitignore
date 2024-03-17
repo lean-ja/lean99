@@ -1,7 +1,9 @@
 # mdbook
-book
-md/*
-!md/SUMMARY.md/.lake
+book/
+
+# workspace setting
+md/build/*.md
+build/*.lean
 
 # lean project
-.lake
+.lake/

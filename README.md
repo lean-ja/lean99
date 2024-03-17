@@ -7,8 +7,8 @@ These are Lean translations of [Ninety-Nine Haskell Problems](https://wiki.haske
 All contributions are wellcome! This repository uses external libraries as follows:
 
 * Generate HTML from `.md` files using [mdbook](https://github.com/rust-lang/mdBook).
-* Generate `.md` files from `.lean` files in the `md` directory using [md-gen](https://github.com/Seasawher/mdgen).
-* The Lean files in the `Src` folder contain the answers to the questions. The answers are deleted using the [mk-exercise](https://github.com/Seasawher/mk-exercise) and output to the `md` folder.
+* Generate `.md` files from `.lean` files in the `md/build` directory using [md-gen](https://github.com/Seasawher/mdgen).
+* The Lean files in the `Src` folder contain the answers to the questions. The answers are deleted using the [mk-exercise](https://github.com/Seasawher/mk-exercise) and output to the `build` folder.
 * [import-all](https://github.com/Seasawher/import-all) is used to generate import statements automatically. This is also used in CI.
 
 To contribute to this repository, please follow these steps.
