@@ -4,14 +4,14 @@ language = "en"
 multilingual = false
 src = "md"
 title = "Lean 99: Ninety-Nine Lean Probelms"
-description = "mdbook setup for Lean project"
+description = "Ninety-Nine Lean coding problems"
 
 [build]
 create-missing = false
 build-dir = "book"
 
 [output.html]
-git-repository-url = "https://github.com/Seasawher/lean-book"
+git-repository-url = "https://github.com/Seasawher/lean99"
 edit-url-template = "https://raw.githubusercontent.com/Seasawher/lean-book/main/{path}"
 additional-js = [
   # Add "Run on Lean4 Playground" button to each code block
