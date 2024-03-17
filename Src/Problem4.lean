@@ -9,7 +9,6 @@ def myLength (l : List α) : Nat :=
   -- sorry
   match l with
   | [] => 0
-  | [_] => 1
   | _ :: a => (myLength a).succ
   -- sorry
 
