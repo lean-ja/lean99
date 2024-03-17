@@ -9,6 +9,7 @@
 * [Problem 3](./build/Problem3.md)
 * [Problem 4](./build/Problem4.md)
 * [Problem 5](./build/Problem5.md)
+* [Problem 6](./build/Problem6.md)
 
 # 31-40: Arithmetic
 
