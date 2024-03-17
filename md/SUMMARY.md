@@ -11,3 +11,10 @@
 * [Problem 3](./Problem3.md)
 
 * [Problem 4](./Problem4.md)
+
+
+# 31-40: Arithmetic
+
+* [Problem 31](./Problem31.md)
+
+* [Problem 32](./Problem32.md)
