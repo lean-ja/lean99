@@ -17,4 +17,5 @@ To contribute to this repository, please follow these steps.
 1. Edit the Lean files in the `Src` folder.
 2. Edit [SUMMARY.md](./md/SUMMARY.md) if you are going to add new pages.
 3. Run `lake run build`.
-4. Commit the changes and open a pull request!
+4. To view the preview, run `mdbook serve --open`. Don't forget to run `lake run build` after modifying the `.lean` file in the `Src` directory.
+5. Commit the changes and open a pull request!
