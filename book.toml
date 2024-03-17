@@ -11,6 +11,7 @@ create-missing = false
 build-dir = "book"
 
 [output.html]
+no-section-label = true
 git-repository-url = "https://github.com/lean-ja/lean99"
 additional-js = [
   # Add "Run on Lean4 Playground" button to each code block
