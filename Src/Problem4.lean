@@ -2,14 +2,13 @@
 # Problem 4
 Find the number of elements in a list.
 -/
-
 variable {α : Type}
 
 def myLength (l : List α) : Nat :=
   -- sorry
   match l with
   | [] => 0
-  | _ :: a => (myLength a).succ
+  | _ :: a => myLength a + 1
   -- sorry
 
 -- The following code is a test case and you should not change it.

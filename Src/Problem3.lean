@@ -2,7 +2,6 @@
 # Problem 3
 Find the K'th element of a list.
 -/
-
 variable {α : Type}
 
 def elementAt (l : List α) (k : Nat) : Option α :=
@@ -11,7 +10,7 @@ def elementAt (l : List α) (k : Nat) : Option α :=
   | [], _ => none
   | _, 0 => none
   | a :: _, 1 => some a
-  | _ :: a, Nat.succ k => elementAt a k
+  | _ :: a, k + 1 => elementAt a k
   -- sorry
 
 -- The following code is a test case and you should not change it.
