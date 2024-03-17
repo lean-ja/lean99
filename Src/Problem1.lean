@@ -2,7 +2,6 @@
 # Problem 1
 Find the last element of a list.
 -/
-
 variable {α : Type}
 
 def myLast (l : List α) : Option α :=
