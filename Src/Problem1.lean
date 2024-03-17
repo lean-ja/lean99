@@ -13,7 +13,7 @@ def myLast (l : List α) : Option α :=
   | _ :: as => myLast as
   -- sorry
 
--- The following is a test case, you don't need to edit it.
+-- The following code is a test case and you should not change it.
 
 example : myLast [1, 2, 3, 4] = some 4 := by rfl
 

@@ -17,7 +17,7 @@ def gcd (m n : Nat) : Nat :=
   termination_by m
   decreasing_by sorry
 
--- The following is a test case, you don't need to edit it.
+-- The following code is a test case and you should not change it.
 
 example : gcd 6 0 = 6 := by first | native_decide | rfl
 

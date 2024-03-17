@@ -12,7 +12,7 @@ def myLength (l : List α) : Nat :=
   | _ :: a => (myLength a).succ
   -- sorry
 
--- The following is a test case, you don't need to edit it.
+-- The following code is a test case and you should not change it.
 
 example : myLength [123, 456, 789] = 3 := by rfl
 

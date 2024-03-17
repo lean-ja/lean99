@@ -16,7 +16,7 @@ def myButLast (l : List α) : Option α :=
     | none => none
   -- sorry
 
--- The following is a test case, you don't need to edit it.
+-- The following code is a test case and you should not change it.
 
 example : myButLast [1, 2, 3, 4] = some 3 := rfl
 

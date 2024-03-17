@@ -14,7 +14,7 @@ def elementAt (l : List α) (k : Nat) : Option α :=
   | _ :: a, Nat.succ k => elementAt a k
   -- sorry
 
--- The following is a test case, you don't need to edit it.
+-- The following code is a test case and you should not change it.
 
 example : elementAt ['a', 'b', 'c', 'd', 'e'] 3 = some 'c' := by rfl
 
