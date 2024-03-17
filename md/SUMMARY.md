@@ -2,4 +2,4 @@
 
 [Introduction](./README.md)
 
-[How to use](./HowToUse.md)
+[Problem 1](./Problem1.md)

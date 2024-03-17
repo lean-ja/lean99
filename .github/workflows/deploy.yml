@@ -38,8 +38,11 @@ jobs:
         with:
           mdbook-version: '0.4.32'
 
+      - name: run mk-exercise
+        run: lake exe mk_exercise Src md
+
       - name: run mdgen
-        run: lake exe mdgen Src md
+        run: lake exe mdgen md md
 
       - name: build by mdbook
         run: mdbook build

@@ -3,7 +3,7 @@ authors = ["Seasawher"]
 language = "en"
 multilingual = false
 src = "md"
-title = "Lean Book"
+title = "Lean 99: Ninety-Nine Lean Probelms"
 description = "mdbook setup for Lean project"
 
 [build]
