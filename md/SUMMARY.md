@@ -11,3 +11,5 @@
 # 31-40: Arithmetic
 
 * [Problem 31](./Problem31.md)
+
+* [Problem 32](./Problem32.md)
