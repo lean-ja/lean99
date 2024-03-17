@@ -4,4 +4,5 @@ import Src.Problem3
 import Src.Problem31
 import Src.Problem32
 import Src.Problem4
+import Src.Problem5
 import Src.README
