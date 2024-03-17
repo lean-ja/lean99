@@ -8,10 +8,10 @@ variable {α : Type}
 def elementAt (l : List α) (k : Nat) : Option α :=
   -- sorry
   match l, k with
-  | [] , _  => none
-  | _ , 0 => none
-  | a :: _ , 1 => some a
-  | _ :: a , Nat.succ k => elementAt a k
+  | [], _ => none
+  | _, 0 => none
+  | a :: _, 1 => some a
+  | _ :: a, Nat.succ k => elementAt a k
   -- sorry
 
 -- The following is a test case, you don't need to edit it.
