@@ -6,4 +6,5 @@ import Src.Problem32
 import Src.Problem4
 import Src.Problem5
 import Src.Problem6
+import Src.Problem7
 import Src.README
