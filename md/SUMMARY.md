@@ -4,16 +4,16 @@
 
 # 1-10: Lists
 
-* [Problem 1](./build/Problem1.md)
-* [Problem 2](./build/Problem2.md)
-* [Problem 3](./build/Problem3.md)
-* [Problem 4](./build/Problem4.md)
-* [Problem 5](./build/Problem5.md)
-* [Problem 6](./build/Problem6.md)
-* [Problem 7](./build/Problem7.md)
-* [Problem 8](./build/Problem8.md)
+* [1: Find the last element](./build/Problem1.md)
+* [2: Find the second-last element](./build/Problem2.md)
+* [3: Find the K'th element](./build/Problem3.md)
+* [4: Find the number of elements](./build/Problem4.md)
+* [5: Reverse a list](./build/Problem5.md)
+* [6: Detect palindrome](./build/Problem6.md)
+* [7: Flatten a nested list](./build/Problem7.md)
+* [8: Eliminate consecutive duplicates](./build/Problem8.md)
 
 # 31-40: Arithmetic
 
-* [Problem 31](./build/Problem31.md)
-* [Problem 32](./build/Problem32.md)
+* [31: Prime number detection](./build/Problem31.md)
+* [32: Euclid's algorithm](./build/Problem32.md)
