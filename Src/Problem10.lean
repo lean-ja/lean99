@@ -1,21 +1,26 @@
 /-
 # Problem 10
-Implement the so-called run-length encoding data compression method. Consecutive duplicates of elements are encoded as lists `(N, E)` where `N` is the number of duplicates of the element `E`.
+Use the result of Problem 9 to implement the so-called run-length encoding data compression method. Consecutive duplicates of elements are encoded as lists `(N, E)` where `N` is the number of duplicates of the element `E`.
 -/
-variable {α : Type} [BEq α]
+variable {α : Type} [BEq α] [Inhabited α]
 
-def encode (l : List α) : List (Nat × α) :=
+def pack (l : List α) : List (List α) :=
   -- sorry
   match l with
   | [] => []
-  | h :: t =>
-    let (a, b) := l.span (· == h)
-    (a.length, h) :: encode b
+  | [a] => [[a]]
+  | a :: b :: t =>
+    let p := pack (b :: t)
+    if a != b then
+      [a] :: p
+    else
+      ([a] ++ p.head!) :: p.tail!
   -- sorry
 
-  -- Avoid proving that the function terminates as a recursive function.
-  -- You don't have to fill in the `sorry` here.
-  decreasing_by sorry
+def encode (l : List α) : List (Nat × α) :=
+  -- sorry
+  pack l |>.map fun x => (x.length, x.head!)
+  -- sorry
 
 -- The following code is a test case and you should not change it.
 

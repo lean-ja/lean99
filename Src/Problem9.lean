@@ -4,7 +4,7 @@ Pack consecutive duplicates of list elements into sublists.
 -/
 variable {α : Type} [BEq α]
 
-def pack (l : List α) : List $ List α :=
+def pack (l : List α) : List (List α) :=
   -- sorry
   match l with
   | [] => []
