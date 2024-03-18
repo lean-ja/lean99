@@ -13,6 +13,7 @@
 * [7: Flatten a nested list](./build/Problem7.md)
 * [8: Eliminate consecutive duplicates](./build/Problem8.md)
 * [9: Pack consecutive duplicates](./build/Problem9.md)
+* [10: Run-length encoding](./build/Problem10.md)
 
 # 31-40: Arithmetic
 
