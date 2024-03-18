@@ -12,7 +12,7 @@ def gcd (m n : Nat) : Nat :=
     gcd (n % m) m
   -- sorry
 
-  -- Avoid proving that `gcd` terminates as a recursive function.
+  -- Avoid proving that the function terminates as a recursive function.
   -- You don't have to fill in the `sorry` here.
   decreasing_by sorry
 
