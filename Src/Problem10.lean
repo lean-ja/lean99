@@ -9,8 +9,8 @@ def encode (l : List α) : List (Nat × α) :=
   match l with
   | [] => []
   | h :: t =>
-    let (a, b) := t.span (· == h)
-    (a.length + 1, h) :: encode b
+    let (a, b) := l.span (· == h)
+    (a.length, h) :: encode b
   -- sorry
 
   -- Avoid proving that the function terminates as a recursive function.
