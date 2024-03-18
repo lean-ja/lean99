@@ -2,6 +2,8 @@
 # Problem 12
 Given a run-length code list generated as specified in problem 11. Construct its uncompressed version.
 -/
+namespace P12 --#
+
 variable {α : Type} [BEq α]
 
 inductive Data (α : Type) where
@@ -26,3 +28,5 @@ example : decodeModified [multiple 2 'a', single 'b', multiple 2 'c'] = ['a', 'a
 example : decodeModified [single 'a', single 'b', single 'c'] = ['a', 'b', 'c'] := rfl
 
 example : decodeModified [multiple 3 '2', multiple 2 '1', single '9'] = ['2', '2', '2', '1', '1', '9'] := rfl
+
+end P12 --#

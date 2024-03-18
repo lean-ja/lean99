@@ -2,6 +2,8 @@
 # Problem 10
 Use the result of Problem 9 to implement the so-called run-length encoding data compression method. Consecutive duplicates of elements are encoded as lists `(N, E)` where `N` is the number of duplicates of the element `E`.
 -/
+namespace P10 --#
+
 variable {α : Type} [BEq α] [Inhabited α]
 
 def pack (l : List α) : List (List α) :=
@@ -31,3 +33,5 @@ example : encode ['a', 'a', 'b', 'c', 'c'] = [(2, 'a'), (1, 'b'), (2, 'c')] := r
 example : encode [1, 1] = [(2, 1)] := rfl
 
 example : encode ([] : List α) = [] := rfl
+
+end P10 --#

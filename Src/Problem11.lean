@@ -2,6 +2,8 @@
 # Problem 11
 Modify the result of problem 10 in such a way that if an element has no duplicates it is simply copied into the result list. Only elements with duplicates are transferred as `(N E)` lists.
 -/
+namespace P11 --#
+
 variable {α : Type} [BEq α]
 
 inductive Data (α : Type) where
@@ -37,3 +39,5 @@ example : encodeModified ([] : List α) = [] := by rfl
 
 example : encodeModified ['a', 'b', 'b', 'b', 'c', 'b', 'b'] =
   [single 'a', multiple 3 'b', single 'c', multiple 2 'b'] := by rfl
+
+end P11 --#
