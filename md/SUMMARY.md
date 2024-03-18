@@ -21,6 +21,7 @@
 * [12: Decode a run-length encoded list](./build/Problem12.md)
 * [14: Duplicate elements](./build/Problem14.md)
 * [15: Replicate elements K times](./build/Problem15.md)
+* [20: Remove the K'th element](./build/Problem20.md)
 
 # 31-40: Arithmetic
 

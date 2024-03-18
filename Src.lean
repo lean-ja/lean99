@@ -5,6 +5,7 @@ import Src.Problem12
 import Src.Problem14
 import Src.Problem15
 import Src.Problem2
+import Src.Problem20
 import Src.Problem3
 import Src.Problem31
 import Src.Problem32
