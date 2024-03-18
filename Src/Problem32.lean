@@ -14,7 +14,6 @@ def gcd (m n : Nat) : Nat :=
 
   -- Avoid proving that `gcd` terminates as a recursive function.
   -- You don't have to fill in the `sorry` here.
-  termination_by m
   decreasing_by sorry
 
 -- The following code is a test case and you should not change it.
