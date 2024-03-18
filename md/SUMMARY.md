@@ -15,6 +15,12 @@
 * [9: Pack consecutive duplicates](./build/Problem9.md)
 * [10: Run-length encoding](./build/Problem10.md)
 
+# 11-20: Lists, continued
+
+* [11: Modified run-length encoding](./build/Problem11.md)
+* [14: Duplicate elements](./build/Problem14.md)
+* [15: Replicate elements K times](./build/Problem15.md)
+
 # 31-40: Arithmetic
 
 * [31: Prime number detection](./build/Problem31.md)

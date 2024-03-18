@@ -1,5 +1,8 @@
 import Src.Problem1
 import Src.Problem10
+import Src.Problem11
+import Src.Problem14
+import Src.Problem15
 import Src.Problem2
 import Src.Problem3
 import Src.Problem31
