@@ -12,6 +12,7 @@ deriving Repr
 open Data
 
 def encodeModified (l : List α) : List (Data α) :=
+  -- sorry
   match l with
   | [] => []
   | x :: xs =>
@@ -20,6 +21,7 @@ def encodeModified (l : List α) : List (Data α) :=
       multiple as.length x :: encodeModified bs
     else
       single x :: encodeModified bs
+  -- sorry
 
   -- Avoid proving that the function terminates as a recursive function.
   -- You don't have to fill in the `sorry` here.
