@@ -1,6 +1,6 @@
 /-
 # Problem 7
-(Intermediate) Flatten a nested list structure.
+(Intermediate 🌟🌟) Flatten a nested list structure.
 -/
 
 -- We have to define a new data type, because lists in Lean are homogeneous.

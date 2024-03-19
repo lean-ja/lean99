@@ -1,6 +1,6 @@
 /-
 # Problem 32
-(Intermediate) Determine the greatest common divisor of two positive integer numbers. Use the Euclid's algorithm.
+(Intermediate 🌟🌟) Determine the greatest common divisor of two positive integer numbers. Use the Euclid's algorithm.
 -/
 
 /-- Euclidean algorithm -/

@@ -1,6 +1,6 @@
 /-
 # Problem 31
-(Intermediate) Determine whether a given integer number is prime.
+(Intermediate 🌟🌟) Determine whether a given integer number is prime.
 -/
 
 def isPrime (n : Nat) : Bool :=

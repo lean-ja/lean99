@@ -1,6 +1,6 @@
 /-
 # Problem 16
-(Intermediate) Drop every N'th element from a list.
+(Intermediate 🌟🌟) Drop every N'th element from a list.
 -/
 variable {α : Type}
 

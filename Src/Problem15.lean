@@ -1,6 +1,6 @@
 /-
 # Problem 15
-(Intermediate) Replicate the elements of a list a given number of times.
+(Intermediate 🌟🌟) Replicate the elements of a list a given number of times.
 -/
 
 variable {α : Type}

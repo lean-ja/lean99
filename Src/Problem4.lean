@@ -1,6 +1,6 @@
 /-
 # Problem 4
-(Easy) Find the number of elements in a list.
+(Easy 🌟) Find the number of elements in a list.
 -/
 variable {α : Type}
 

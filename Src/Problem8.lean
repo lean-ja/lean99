@@ -1,6 +1,6 @@
 /-
 # Problem 8
-(Intermediate) Eliminate consecutive duplicates of list elements.
+(Intermediate 🌟🌟) Eliminate consecutive duplicates of list elements.
 -/
 variable {α : Type} [BEq α]
 

@@ -1,6 +1,6 @@
 /-
 # Problem 17
-(Easy) Split a list into two parts; the length of the first part is given.
+(Easy 🌟) Split a list into two parts; the length of the first part is given.
 -/
 variable {α : Type}
 

@@ -1,6 +1,6 @@
 /-
 # Problem 14
-(Easy) Duplicate the elements of a list.
+(Easy 🌟) Duplicate the elements of a list.
 -/
 
 variable {α : Type}
