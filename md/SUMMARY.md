@@ -23,6 +23,7 @@
 * [14: Duplicate elements](./build/Problem14.md)
 * [15: Replicate elements K times](./build/Problem15.md)
 * [16: Drop every N'th element](./build/Problem16.md)
+* [17: Split a list](./build/Problem17.md)
 * [20: Remove the K'th element](./build/Problem20.md)
 
 # 31-40: Arithmetic
