@@ -1,7 +1,6 @@
 /-
 # Problem 2
-
-Find the last-but-one (or second-last) element of a list.
+(Easy) Find the last-but-one (or second-last) element of a list.
 -/
 variable {α : Type}
 

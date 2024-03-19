@@ -1,7 +1,6 @@
 /-
 # Problem 6
-
-Find out whether a list is a palindrome.
+(Easy) Find out whether a list is a palindrome.
 
 Hint: A palindrome can be read forward or backward; e.g. (x a m a x).
 -/

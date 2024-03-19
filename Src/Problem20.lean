@@ -1,6 +1,6 @@
 /-
-  # Problem 20
-  Remove the K'th element from a list.
+# Problem 20
+(Easy) Remove the K'th element from a list.
 -/
 variable {α : Type}
 

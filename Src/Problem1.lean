@@ -1,6 +1,6 @@
 /-
 # Problem 1
-Find the last element of a list.
+(Easy) Find the last element of a list.
 -/
 variable {α : Type}
 

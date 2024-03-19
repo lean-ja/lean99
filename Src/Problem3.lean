@@ -1,6 +1,6 @@
 /-
 # Problem 3
-Find the K'th element of a list.
+(Easy) Find the K'th element of a list.
 -/
 variable {α : Type}
 

@@ -1,6 +1,6 @@
 /-
 # Problem 9
-Pack consecutive duplicates of list elements into sublists.
+(Intermediate) Pack consecutive duplicates of list elements into sublists.
 -/
 namespace P9 --#
 

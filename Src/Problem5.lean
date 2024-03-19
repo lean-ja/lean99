@@ -1,6 +1,6 @@
 /-
 # Problem 5
-Reverse a list.
+(Easy) Reverse a list.
 -/
 variable {α : Type}
 

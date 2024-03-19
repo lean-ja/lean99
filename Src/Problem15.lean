@@ -1,6 +1,6 @@
 /-
-  # Problem 15
-  Replicate the elements of a list a given number of times.
+# Problem 15
+(Intermediate) Replicate the elements of a list a given number of times.
 -/
 
 variable {α : Type}
