@@ -19,6 +19,7 @@
 
 * [11: Modified run-length encoding](./build/Problem11.md)
 * [12: Decode a run-length encoded list](./build/Problem12.md)
+* [13: Direct run-length encoding](./build/Problem13.md)
 * [14: Duplicate elements](./build/Problem14.md)
 * [15: Replicate elements K times](./build/Problem15.md)
 * [20: Remove the K'th element](./build/Problem20.md)
