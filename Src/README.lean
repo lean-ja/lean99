@@ -9,7 +9,7 @@ These are Lean translations of [Ninety-Nine Haskell Problems](https://wiki.haske
 
 * Every Lean code block in this book has a button to jump to the Lean web playground. Replace the `sorry` with your own code so that the test code passes.
 
-* You can see an answer by clicking on the <i class="fa fa-play"></i> button in the top right-hand corner of each page.
+* You can see an answer by clicking on the <i class="fa fa-eye"></i> button in the top right-hand corner of each page.
 
 Good luck! 👍
 -/

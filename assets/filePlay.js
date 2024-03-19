@@ -5,11 +5,11 @@
 
 // The `i` element in the icon part of the edit button.
 const editButtonIcon = document.querySelector('#git-edit-button');
-editButtonIcon.className = 'fa fa-play';
+editButtonIcon.className = 'fa fa-eye';
 
 // The `a` element representing the edit button.
 const editButtonLink = editButtonIcon.parentElement;
-editButtonLink.title = 'Run on Lean 4 playground';
+editButtonLink.title = 'See a solution';
 editButtonLink.ariaLabel = editButtonLink.title;
 
 // Correct the `.md` extension to `.lean`.
