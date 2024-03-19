@@ -16,7 +16,7 @@ editButtonLink.ariaLabel = editButtonLink.title;
 editButtonLink.href = editButtonLink.href.replace(/\.md$/, '.lean');
 
 // Correct the location of the directory where the Lean files are located.
-editButtonLink.href = editButtonLink.href.replace('/md/', '/Src/');
+editButtonLink.href = editButtonLink.href.replace('/md/build/', '/Src/');
 
 editButtonLink.addEventListener('click', async function (e) {
   e.preventDefault();

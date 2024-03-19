@@ -5,7 +5,9 @@ These are Lean translations of [Ninety-Nine Haskell Problems](https://wiki.haske
 
 ## How to Play
 
-Every Lean code block in this book has a button to jump to the Lean Web Playground. Replace the `sorry` with your own code so that the test code passes. The solutions we have prepared can be found in the `Src` directory.
+Every Lean code block in this book has a button to jump to the Lean Web Playground. Replace the `sorry` with your own code so that the test code passes.
+
+You can see an answer by clicking on the <i class="fa fa-play"></i> button in the top right-hand corner of each page.
 
 Good luck! 👍
 -/
