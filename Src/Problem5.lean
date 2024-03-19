@@ -13,7 +13,7 @@ def myReverse (l : List α) : List α :=
 
 -- The following code is a test case and you should not change it.
 
-example : myReverse [1,2,3,4] = [4,3,2,1] := rfl
+example : myReverse [1, 2, 3, 4] = [4, 3, 2, 1] := rfl
 
 example : myReverse ["man", "plan", "canal", "panama"]
   = ["panama", "canal", "plan", "man"] := rfl
