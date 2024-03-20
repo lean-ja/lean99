@@ -28,6 +28,10 @@
 * [19: Rotate a list](./build/Problem19.md)
 * [20: Remove the K'th element](./build/Problem20.md)
 
+# 21-30: Lists again
+
+* [21: Insert an element](./build/Problem21.md)
+
 # 31-40: Arithmetic
 
 * [31: Prime number detection](./build/Problem31.md)
