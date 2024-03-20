@@ -31,6 +31,7 @@
 # 21-30: Lists again
 
 * [21: Insert an element](./build/Problem21.md)
+* [22: Integers within a range](./build/Problem22.md)
 
 # 31-40: Arithmetic
 
