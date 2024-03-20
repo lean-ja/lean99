@@ -8,6 +8,7 @@ import Src.Problem15
 import Src.Problem16
 import Src.Problem17
 import Src.Problem18
+import Src.Problem19
 import Src.Problem2
 import Src.Problem20
 import Src.Problem3
