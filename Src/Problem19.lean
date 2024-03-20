@@ -5,8 +5,10 @@
 variable {α : Type}
 
 def rotate (l : List α) (n : Nat) : List α :=
+  -- sorry
   let n := n % l.length
   l.drop n ++ l.take n
+  -- sorry
 
 -- The following code is a test case and you should not change it.
 
