@@ -6,7 +6,9 @@ variable {α : Type}
 
 def insertAt (e : α) (l : List α) (i : Nat) : List α :=
   -- sorry
-  l.take (i - 1) ++ [e] ++ l.drop (i - 1)
+  match l, i with
+  | a :: b , i + 2 => a :: insertAt e b (i + 1)
+  | _ , _ => e :: l
   -- sorry
 
 -- The following code is a test case and you should not change it.
