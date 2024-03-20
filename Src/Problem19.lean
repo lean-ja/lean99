@@ -1,6 +1,6 @@
 /-
 # Problem 19
-Rotate a list `N` places to the left.
+(Intermediate 🌟🌟) Rotate a list `N` places to the left.
 -/
 variable {α : Type}
 
