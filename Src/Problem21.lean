@@ -1,6 +1,6 @@
 /-
 # Problem 21
-Insert an element at a given position into a list.
+(Easy 🌟) Insert an element at a given position into a list.
 -/
 variable {α : Type}
 

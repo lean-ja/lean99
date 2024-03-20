@@ -1,6 +1,6 @@
 /-
 # Problem 22
-Create a list containing all integers within a given range.
+(Easy 🌟) Create a list containing all integers within a given range.
 -/
 
 def range (m n : Int) : List Int :=
