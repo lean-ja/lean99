@@ -13,6 +13,7 @@ import Src.Problem2
 import Src.Problem20
 import Src.Problem21
 import Src.Problem22
+import Src.Problem23
 import Src.Problem3
 import Src.Problem31
 import Src.Problem32
