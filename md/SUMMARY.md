@@ -33,6 +33,7 @@
 * [21: Insert an element](./build/Problem21.md)
 * [22: Integers within a range](./build/Problem22.md)
 * [23: Random selection](./build/Problem23.md)
+* [24: Draw N diffrent random numbers](./build/Problem24.md)
 
 # 31-40: Arithmetic
 
