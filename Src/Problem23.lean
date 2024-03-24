@@ -1,6 +1,6 @@
 /-
 # Problem 23
-Extract a given number of randomly selected elements from a list.
+(Intermediate 🌟🌟) Extract a given number of randomly selected elements from a list.
 -/
 variable {α : Type} [Inhabited α]
 
