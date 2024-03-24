@@ -9,7 +9,7 @@ def elementAt (l : List α) (k : Nat) : Option α :=
   match l, k with
   | [], _ => none
   | _, 0 => none
-  | a :: _, 1 => some a
+  | a :: _, 1 => a
   | _ :: a, k + 1 => elementAt a k
   -- sorry
 

@@ -8,7 +8,7 @@ def myLast (l : List α) : Option α :=
   -- sorry
   match l with
   | [] => none
-  | [a] => some a
+  | [a] => a
   | _ :: as => myLast as
   -- sorry
 
