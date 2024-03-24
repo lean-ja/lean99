@@ -28,18 +28,17 @@ def diffSelect (count range : Nat) : IO (List Nat) := do
     if let some e := element then
       univ := rest
       result := e :: result
-    else
-      break
+
   return result
 where
   extractOne (univ : List Nat) : IO (Option Nat × List Nat) := do
-    match univ with
-    | [] => pure (none, [])
-    | _ =>
-      let index ← IO.rand 0 (univ.length - 1)
-      let element := univ.get! index
-      let rest := univ.take index ++ univ.drop (index + 1)
-      pure (element, rest)
+    if univ == [] then
+      return (none, [])
+
+    let index ← IO.rand 0 (univ.length - 1)
+    let element := univ.get! index
+    let rest := univ.take index ++ univ.drop (index + 1)
+    return (element, rest)
   -- sorry
 
 #eval diffSelect 3 3
