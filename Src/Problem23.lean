@@ -19,7 +19,7 @@ def rndSelect (l : List α) (n : Nat) : IO (List α) := do
 
 -- The following codes are for test and you should not edit these.
 
-def runTest (l : List Nat) (n : Nat) : IO Unit := do
+def runTest [BEq α] [ToString α] (l : List α) (n : Nat) : IO Unit := do
   let result ← rndSelect l n
   let mut check := true
   check := check && result.length == n
@@ -30,6 +30,8 @@ def runTest (l : List Nat) (n : Nat) : IO Unit := do
     IO.throwServerError s!"failed: rndSelect {l} {n} = {result}"
 
 #eval runTest [1, 2, 3] 0
+
+#eval runTest ['a', 'b'] 1
 
 #eval runTest [1, 2, 3, 4, 5] 2
 
