@@ -18,7 +18,7 @@ example : List.nrange 5 = [1, 2, 3, 4, 5] := rfl
 def diffSelect (count range : Nat) : IO (List Nat) := do
   -- sorry
   if count > range then
-    dbg_trace s!"can't draw {count} different numbers from 1..{range}"
+    IO.println s!"can't draw {count} different numbers from 1..{range}"
     return []
 
   let mut univ := List.nrange range
