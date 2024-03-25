@@ -28,7 +28,7 @@ def runTest [BEq α] [ToString α] (l : List α) (n : Nat) : IO Unit := do
   if check then
     IO.println s!"ok!"
   else
-    IO.throwServerError s!"failed: rndSelect {l} {n} = {result}"
+    throw <| .userError s!"failed: rndSelect {l} {n} = {result}"
 
 #eval runTest [1, 2, 3] 0
 

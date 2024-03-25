@@ -53,7 +53,7 @@ def runTest (count range : Nat) : IO Unit := do
   if check then
     IO.println "ok!"
   else
-    IO.throwServerError s!"failed: diffSelect {count} {range} = {result}"
+    throw <| .userError s!"failed: diffSelect {count} {range} = {result}"
 
 #eval runTest 3 3
 
