@@ -4,6 +4,8 @@
 -/
 import Lean
 
+namespace P23
+
 variable {α : Type} [Inhabited α]
 
 def rndSelect (l : List α) (n : Nat) : IO (List α) := do
@@ -40,3 +42,5 @@ def runTest [BEq α] [ToString α] (l : List α) (n : Nat) : IO Unit := do
 #eval runTest [2, 2, 2] 12
 
 #eval runTest (List.range 5200) 1897
+
+end P23

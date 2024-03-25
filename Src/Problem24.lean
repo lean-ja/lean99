@@ -4,6 +4,8 @@
 -/
 import Lean
 
+namespace P24
+
 /-- List of natural numbers from `1` to `n` -/
 def List.nrange (n : Nat) : List Nat :=
   match n with
@@ -65,3 +67,5 @@ def runTest (count range : Nat) : IO Unit := do
 #eval runTest 1998 1999
 
 #eval runTest 5668 5998
+
+end P24
