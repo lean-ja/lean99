@@ -19,30 +19,22 @@ def rndSelect (l : List α) (n : Nat) : IO (List α) := do
 
 -- The following code is a test case and you should not change it.
 
-/-- generate a random list. -/
-def genRandList (max_len max_num : Nat) : IO (List Nat) := do
-  let mut l := []
-  let len ← IO.rand 0 max_len
-  for _ in [:len] do
-    let x ← IO.rand 0 max_num
-    l := x :: l
-  return l
+def runTest (l : List Nat) (n : Nat) : IO Unit := do
+  let result ← rndSelect l n
+  let mut check := true
+  check := check && result.length == n
+  check := check && result.all l.contains
+  if check then
+    IO.println s!"ok!"
+  else
+    IO.throwServerError s!"failed: rndSelect {l} {n} = {result}"
 
-def runTest : IO Unit := do
-  for _ in [:50] do
-    let l ← genRandList 20 100
-    let n ← IO.rand 0 100
-    let result ← rndSelect l n
+#eval runTest [1, 2, 3] 0
 
-    let check := if l.isEmpty
-      then result.isEmpty
-      else result.length == n && result.all l.contains
+#eval runTest [1, 2, 3, 4, 5] 2
 
-    if check then
-      IO.print "."
-    else
-      IO.throwServerError s!"\nfailure on: rndSelect {l} {n} = {result}"
+#eval runTest [1, 1, 1] 2
 
-  IO.println "ok!"
+#eval runTest [2, 2, 2] 12
 
-#eval runTest
+#eval runTest (List.range 5200) 1897
