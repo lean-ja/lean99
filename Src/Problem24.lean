@@ -2,6 +2,7 @@
 # Problem 24
 (Easy 🌟) Lotto: Draw `N` different random numbers from the set `1..M`.
 -/
+import Lean
 
 /-- List of natural numbers from `1` to `n` -/
 def List.nrange (n : Nat) : List Nat :=
@@ -41,16 +42,26 @@ where
     return (element, rest)
   -- sorry
 
-#eval diffSelect 3 3
+-- The following code is a test case and you should not change it.
 
-#eval diffSelect 1 1
+def runTest (count range : Nat) : IO Unit := do
+  let result ← diffSelect count range
+  let mut check := true
+  check := check && result.eraseDups.length == count
+  check := check && result.all (List.nrange range).contains
+  if check then
+    IO.println "ok!"
+  else
+    IO.throwServerError s!"failed: diffSelect {count} {range} = {result}"
 
-#eval diffSelect 2 2
+#eval runTest 3 3
 
-#eval diffSelect 24 22
+#eval runTest 1 1
 
-#eval diffSelect 6 49
+#eval runTest 2 2
 
-#eval diffSelect 1998 1999
+#eval runTest 6 49
 
-#eval diffSelect 5668 5998
+#eval runTest 1998 1999
+
+#eval runTest 5668 5998
