@@ -12,7 +12,7 @@ def dupli (l : List α) : List α :=
   | a :: b => a :: a :: dupli b
   -- sorry
 
--- The following code is a test case and you should not change it.
+-- The following codes are for test and you should not edit these.
 
 example : dupli [1, 2, 3] = [1, 1, 2, 2, 3, 3] := by rfl
 

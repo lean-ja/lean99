@@ -21,7 +21,7 @@ def decodeModified (l : List (Data α)) : List α :=
   | (single a) :: t => a :: decodeModified t
   -- sorry
 
--- The following code is a test case and you should not change it.
+-- The following codes are for test and you should not edit these.
 
 example : decodeModified [multiple 2 'a', single 'b', multiple 2 'c'] = ['a', 'a', 'b', 'c', 'c'] := rfl
 

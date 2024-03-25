@@ -18,7 +18,7 @@ def split (l : List α) (n : Nat) : List α × List α :=
     (h :: a, b)
   -- sorry
 
--- The following code is a test case and you should not change it.
+-- The following codes are for test and you should not edit these.
 
 example : split [1, 2, 3, 4, 5] 2 = ([1, 2], [3, 4, 5]) := rfl
 

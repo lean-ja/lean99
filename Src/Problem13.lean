@@ -32,7 +32,7 @@ where
       (n + 1, a) :: (counting (b :: t) |>.tail!)
   -- sorry
 
--- The following code is a test case and you should not change it.
+-- The following codes are for test and you should not edit these.
 
 example : encodeDirect ['a', 'a', 'b', 'c'] =
   [multiple 2 'a', single 'b', single 'c'] := by rfl

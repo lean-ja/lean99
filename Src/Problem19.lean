@@ -10,7 +10,7 @@ def rotate (l : List α) (n : Nat) : List α :=
   l.drop n ++ l.take n
   -- sorry
 
--- The following code is a test case and you should not change it.
+-- The following codes are for test and you should not edit these.
 
 example : rotate [1, 2, 3, 4, 5] 2 = [3, 4, 5, 1, 2] := rfl
 

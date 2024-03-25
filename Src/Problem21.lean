@@ -11,7 +11,7 @@ def insertAt (e : α) (l : List α) (i : Nat) : List α :=
   | _ , _ => e :: l
   -- sorry
 
--- The following code is a test case and you should not change it.
+-- The following codes are for test and you should not edit these.
 
 example : insertAt "X" ["1", "2", "3", "4"] 2 = ["1", "X", "2", "3", "4"] := rfl
 

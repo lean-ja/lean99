@@ -42,7 +42,7 @@ where
     return (element, rest)
   -- sorry
 
--- The following code is a test case and you should not change it.
+-- The following codes are for test and you should not edit these.
 
 def runTest (count range : Nat) : IO Unit := do
   let result ← diffSelect count range

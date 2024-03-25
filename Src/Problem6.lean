@@ -18,7 +18,7 @@ def isPalindrome (l : List α) : Bool :=
   l == l.reverse
   -- sorry
 
--- The following code is a test case and you should not change it.
+-- The following codes are for test and you should not edit these.
 
 example : isPalindrome [1, 2, 3] = false := rfl
 

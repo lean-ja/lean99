@@ -30,7 +30,7 @@ def encodeModified (l : List α) : List (Data α) :=
   decreasing_by
     all_goals sorry
 
--- The following code is a test case and you should not change it.
+-- The following codes are for test and you should not edit these.
 
 example : encodeModified ['a', 'a', 'b', 'c'] =
   [multiple 2 'a', single 'b', single 'c'] := by rfl

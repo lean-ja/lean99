@@ -18,7 +18,7 @@ def isPrime (n : Nat) : Bool :=
     divList.length == 0
   -- sorry
 
--- The following code is a test case and you should not change it.
+-- The following codes are for test and you should not edit these.
 
 example : isPrime 7 = true := rfl
 

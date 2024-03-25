@@ -16,7 +16,7 @@ def gcd (m n : Nat) : Nat :=
   -- You don't have to fill in the `sorry` here.
   decreasing_by sorry
 
--- The following code is a test case and you should not change it.
+-- The following codes are for test and you should not edit these.
 
 example : gcd 6 0 = 6 := by first | native_decide | rfl
 

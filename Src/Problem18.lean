@@ -12,7 +12,7 @@ def slice (l : List α) (i k : Nat) : List α :=
     l.drop (k - 1) |>.take (i - k + 1)
   -- sorry
 
--- The following code is a test case and you should not change it.
+-- The following codes are for test and you should not edit these.
 
 example : slice [1, 2, 3, 4, 5, 6, 7, 8, 9] 3 7 = [3, 4, 5, 6, 7] := by rfl
 

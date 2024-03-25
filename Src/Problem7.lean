@@ -53,7 +53,7 @@ def flatten (nl : NestedList α) : List α :=
   | list (x :: xs) => flatten x ++ flatten (list xs)
   -- sorry
 
--- The following code is a test case and you should not change it.
+-- The following codes are for test and you should not edit these.
 
 example : flatten (elem 5) = [5] := rfl
 

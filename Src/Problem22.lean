@@ -13,7 +13,7 @@ where
     | l + 1 => generate start l ++ [start + l]
   -- sorry
 
--- The following code is a test case and you should not change it.
+-- The following codes are for test and you should not edit these.
 
 example : range 4 9 = [4, 5, 6, 7, 8, 9] := by rfl
 

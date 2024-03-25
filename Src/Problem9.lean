@@ -19,7 +19,7 @@ def pack (l : List α) : List (List α) :=
   -- You don't have to fill in the `sorry` here.
   decreasing_by sorry
 
--- The following code is a test case and you should not change it.
+-- The following codes are for test and you should not edit these.
 
 example : pack ([] : List α) = [] := rfl
 

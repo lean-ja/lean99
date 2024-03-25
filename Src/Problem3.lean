@@ -13,7 +13,7 @@ def elementAt (l : List α) (k : Nat) : Option α :=
   | _ :: a, k + 1 => elementAt a k
   -- sorry
 
--- The following code is a test case and you should not change it.
+-- The following codes are for test and you should not edit these.
 
 example : elementAt ['a', 'b', 'c', 'd', 'e'] 3 = some 'c' := by rfl
 

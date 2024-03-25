@@ -17,7 +17,7 @@ def rndSelect (l : List α) (n : Nat) : IO (List α) := do
     pure <| l[index]! :: previous
   -- sorry
 
--- The following code is a test case and you should not change it.
+-- The following codes are for test and you should not edit these.
 
 def runTest (l : List Nat) (n : Nat) : IO Unit := do
   let result ← rndSelect l n

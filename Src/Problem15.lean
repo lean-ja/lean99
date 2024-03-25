@@ -16,7 +16,7 @@ def repli (l : List α) (n : Nat) : List α :=
     | m + 1 => x :: solorepl x m
   -- sorry
 
--- The following code is a test case and you should not change it.
+-- The following codes are for test and you should not edit these.
 
 example : repli [1, 2, 3] 3 = [1, 1, 1, 2, 2, 2, 3, 3, 3] := by rfl
 

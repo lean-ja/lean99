@@ -13,7 +13,7 @@ def removeAt (l : List α) (n : Nat) : List α :=
   | x :: b, m + 2 => x :: removeAt b (m + 1)
   -- sorry
 
--- The following code is a test case and you should not change it.
+-- The following codes are for test and you should not edit these.
 
 example : removeAt ['a', 'b', 'c', 'd'] 2 = ['a', 'c', 'd'] := rfl
 

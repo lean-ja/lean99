@@ -11,7 +11,7 @@ def myReverse (l : List α) : List α :=
   | a :: as => myReverse as ++ [a]
   -- sorry
 
--- The following code is a test case and you should not change it.
+-- The following codes are for test and you should not edit these.
 
 example : myReverse [1, 2, 3, 4] = [4, 3, 2, 1] := rfl
 
