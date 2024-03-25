@@ -3,8 +3,7 @@
 (Easy 🌟) Lotto: Draw `N` different random numbers from the set `1..M`.
 -/
 import Lean
-
-namespace P24
+namespace P24 --#
 
 /-- List of natural numbers from `1` to `n` -/
 def List.nrange (n : Nat) : List Nat :=
@@ -68,4 +67,4 @@ def runTest (count range : Nat) : IO Unit := do
 
 #eval runTest 5668 5998
 
-end P24
+end P24 --#

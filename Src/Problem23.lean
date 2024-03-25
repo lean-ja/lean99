@@ -3,8 +3,7 @@
 (Intermediate 🌟🌟) Extract a given number of randomly selected elements from a list.
 -/
 import Lean
-
-namespace P23
+namespace P23 --#
 
 variable {α : Type} [Inhabited α]
 
@@ -43,4 +42,4 @@ def runTest [BEq α] [ToString α] (l : List α) (n : Nat) : IO Unit := do
 
 #eval runTest (List.range 5200) 1897
 
-end P23
+end P23 --#
