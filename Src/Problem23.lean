@@ -2,6 +2,8 @@
 # Problem 23
 (Intermediate 🌟🌟) Extract a given number of randomly selected elements from a list.
 -/
+import Lean
+
 variable {α : Type} [Inhabited α]
 
 def rndSelect (l : List α) (n : Nat) : IO (List α) := do
@@ -15,8 +17,30 @@ def rndSelect (l : List α) (n : Nat) : IO (List α) := do
     pure <| l[index]! :: previous
   -- sorry
 
-#eval rndSelect [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 3
+-- The following code is a test case and you should not change it.
 
-#eval rndSelect [1, 1, 1] 2
+#eval do
+  let genL : IO (List Nat) := do
+    let mut l := []
+    let len ← IO.rand 0 20
+    for _ in [:len] do
+      let x ← IO.rand 0 100
+      l := x::l
+    return l
+  let genN : IO Nat := IO.rand 0 100
 
-#eval rndSelect [1, 2, 3] 0
+  for _ in [:50] do
+    let l ← genL
+    let n ← genN
+    let result ← rndSelect l n
+
+    let check := if l.isEmpty
+      then result.isEmpty
+      else result.length == n && result.all l.contains
+
+    if check then
+      IO.print "."
+    else
+      IO.throwServerError s!"\nfailure on: rndSelect {l} {n} = {result}"
+
+  IO.println "ok!"
