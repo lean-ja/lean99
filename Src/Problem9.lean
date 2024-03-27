@@ -17,14 +17,14 @@ partial def pack (l : List α) : List (List α) :=
 
 -- The following codes are for test and you should not edit these.
 
-def List.unpack (l : List (List α)) : List α :=
+def _root_.List.unpack (l : List (List α)) : List α :=
   match l with
   | [] => []
   | x :: xs => x ++ unpack xs
 
 def runTest [ToString α] (l : List α) : IO Unit := do
   let result := pack l
-  let check := List.unpack result == l
+  let check := result.unpack == l
   if check then
     IO.println "ok!"
   else
