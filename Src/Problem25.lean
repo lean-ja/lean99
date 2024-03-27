@@ -1,6 +1,6 @@
 /-
 # Problem 25
-Generate a random permutation of the elements of a list.
+(Easy 🌟) Generate a random permutation of the elements of a list.
 -/
 variable {α : Type} [Inhabited α] [BEq α]
 
