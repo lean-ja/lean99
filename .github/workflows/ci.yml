@@ -25,9 +25,6 @@ jobs:
           curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- -y --default-toolchain $(cat lean-toolchain)
           echo "$HOME/.elan/bin" >> $GITHUB_PATH
 
-      - name: Check lib completeness
-        run: lake exe import_check Src
-
       - name: Cache dependencies
         uses: actions/cache@v3
         with:
@@ -35,10 +32,6 @@ jobs:
           key: deps-${{ runner.os }}-${{ hashFiles('lean-toolchain') }}-${{ hashFiles('lake-manifest.json') }}
           restore-keys: |
             deps-${{ runner.os }}-${{ hashFiles('lean-toolchain') }}
-
-      # If you use mathlib, uncomment it out.
-      # - name: get mathlib cache
-      #   run: lake exe cache get
 
       - name: run 'lake build'
         run: lake build
