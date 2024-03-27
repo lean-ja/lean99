@@ -34,4 +34,4 @@ jobs:
             deps-${{ runner.os }}-${{ hashFiles('lean-toolchain') }}
 
       - name: run 'lake build'
-        run: lake build
+        run: lake build --quiet
