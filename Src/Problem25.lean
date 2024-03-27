@@ -15,7 +15,7 @@ def List.extractOne (univ : List α) : IO (Option α × List α) := do
   let rest := univ.take index ++ univ.drop (index + 1)
   return (element, rest)
 
-def rndPermu (l : List α) : IO (List α) := do
+partial def rndPermu (l : List α) : IO (List α) := do
   -- sorry
   let (element, rest) ← l.extractOne
   match element with
@@ -23,10 +23,6 @@ def rndPermu (l : List α) : IO (List α) := do
   | some e =>
     return e :: (← rndPermu rest)
   -- sorry
-
-  -- Avoid proving that the function terminates as a recursive function.
-  -- You don't have to fill in the `sorry` here.
-  decreasing_by sorry
 
 -- The following codes are for test and you should not edit these.
 
