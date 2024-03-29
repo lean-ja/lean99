@@ -1,6 +1,6 @@
 /-
 # Problem 26
-Generate combinations of `K` distinct objects chosen from the `N` elements of a list.
+(Intermediate 🌟🌟) Generate combinations of `K` distinct objects chosen from the `N` elements of a list.
 -/
 variable {α : Type}
 
