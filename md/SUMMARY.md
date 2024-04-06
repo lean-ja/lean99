@@ -41,3 +41,4 @@
 
 * [31: Prime number detection](./build/Problem31.md)
 * [32: Euclid's algorithm](./build/Problem32.md)
+* [33: Coprime](./build/Problem33.md)
