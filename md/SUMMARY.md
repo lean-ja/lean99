@@ -43,3 +43,4 @@
 * [32: Euclid's algorithm](./build/Problem32.md)
 * [33: Coprime](./build/Problem33.md)
 * [34: Euler's totient](./build/Problem34.md)
+* [35: Prime factors](./build/Problem35.md)
