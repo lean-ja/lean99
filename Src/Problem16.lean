@@ -7,14 +7,13 @@ variable {α : Type}
 def dropEvery (l : List α) (n : Nat) : List α :=
   -- sorry
   helper l n 1
-where
-  helper : List α → Nat → Nat → List α
-  | [], _, _ => []
-  | x :: xs, n, m =>
-    if m % n = 0 then
-      helper xs n (m + 1)
-    else
-      x :: helper xs n (m + 1)
+  where helper : List α → Nat → Nat → List α
+    | [], _, _ => []
+    | x :: xs, n, m =>
+      if m % n = 0 then
+        helper xs n (m + 1)
+      else
+        x :: helper xs n (m + 1)
   -- sorry
 
 -- The following codes are for test and you should not edit these.

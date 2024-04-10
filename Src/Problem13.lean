@@ -7,9 +7,9 @@ namespace P13 --#
 variable {α : Type} [BEq α] [Inhabited α]
 
 inductive Data (α : Type) where
-| multiple : Nat → α → Data α
-| single : α → Data α
-deriving Repr
+  | multiple : Nat → α → Data α
+  | single : α → Data α
+  deriving Repr
 
 open Data
 
@@ -20,16 +20,15 @@ def encodeDirect (l : List α) : List (Data α) :=
       single a
     else
       multiple n a
-where
-  counting : List α → List (Nat × α)
-  | [] => []
-  | [a] => [(1, a)]
-  | a :: b :: t =>
-    if a != b then
-      (1, a) :: counting (b :: t)
-    else
-      let (n, a) := counting (b :: t) |>.head!
-      (n + 1, a) :: (counting (b :: t) |>.tail!)
+  where counting : List α → List (Nat × α)
+    | [] => []
+    | [a] => [(1, a)]
+    | a :: b :: t =>
+      if a != b then
+        (1, a) :: counting (b :: t)
+      else
+        let (n, a) := counting (b :: t) |>.head!
+        (n + 1, a) :: (counting (b :: t) |>.tail!)
   -- sorry
 
 -- The following codes are for test and you should not edit these.

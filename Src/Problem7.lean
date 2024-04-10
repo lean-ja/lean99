@@ -8,8 +8,8 @@
 variable {α : Type}
 
 inductive NestedList (α : Type) where
-| elem : α → NestedList α
-| list : List (NestedList α) → NestedList α
+  | elem : α → NestedList α
+  | list : List (NestedList α) → NestedList α
 
 section
   /-!
