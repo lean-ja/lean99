@@ -9,7 +9,9 @@ def primeFactors (n : Nat) : List Nat :=
   -- sorry
   loop n 2 [] |>.reverse
   where loop (tgt candidate : Nat) (acc : List Nat) : List Nat :=
-    if candidate <= 1 || tgt ≤ 1 then
+    if candidate <= 1 || candidate > tgt then
+      panic! "candidate is out of range"
+    else if tgt ≤ 1 then
       acc
     else if tgt % candidate = 0 then
       loop (tgt / candidate) candidate <| candidate :: acc
