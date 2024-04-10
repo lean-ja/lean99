@@ -7,9 +7,9 @@ def range (m n : Int) : List Int :=
   -- sorry
   generate m (n - m + 1).toNat
   where generate (start : Int) (length : Nat) : List Int :=
-      match length with
-      | 0 => []
-      | l + 1 => generate start l ++ [start + l]
+    match length with
+    | 0 => []
+    | l + 1 => generate start l ++ [start + l]
   -- sorry
 
 -- The following codes are for test and you should not edit these.
