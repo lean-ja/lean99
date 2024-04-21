@@ -7,12 +7,12 @@ variable {α : Type}
 def myButLast (l : List α) : Option α :=
   -- sorry
   if l.length < 2 then
+    -- `l` の長さが2未満のときでも `i` は定義できてしまうので，
+    -- この if 式が必要
     none
   else
     let i := l.length - 2;
-    match l[i]? with
-    | some x => x
-    | none => none
+    id <$> l[i]?
   -- sorry
 
 -- The following codes are for test and you should not edit these.
