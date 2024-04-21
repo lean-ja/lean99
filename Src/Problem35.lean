@@ -8,7 +8,8 @@ Construct a flat list containing the prime factors in ascending order.
 def primeFactors (n : Nat) : List Nat :=
   -- sorry
   loop n 2 [] |>.reverse
-  where loop (tgt candidate : Nat) (acc : List Nat) : List Nat :=
+where
+  loop (tgt candidate : Nat) (acc : List Nat) : List Nat :=
     if tgt ≤ 1 || candidate > tgt then
       acc
     else if tgt % candidate = 0 then

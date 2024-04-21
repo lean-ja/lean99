@@ -9,7 +9,7 @@ variable {α : Type} [BEq α]
 inductive Data (α : Type) where
   | multiple : Nat → α → Data α
   | single : α → Data α
-  deriving Repr
+deriving Repr
 
 open Data
 

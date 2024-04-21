@@ -9,7 +9,7 @@ variable {α : Type} [BEq α] [Inhabited α]
 inductive Data (α : Type) where
   | multiple : Nat → α → Data α
   | single : α → Data α
-  deriving Repr
+deriving Repr
 
 open Data
 
@@ -20,7 +20,8 @@ def encodeDirect (l : List α) : List (Data α) :=
       single a
     else
       multiple n a
-  where counting : List α → List (Nat × α)
+where
+  counting : List α → List (Nat × α)
     | [] => []
     | [a] => [(1, a)]
     | a :: b :: t =>

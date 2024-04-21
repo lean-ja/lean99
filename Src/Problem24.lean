@@ -32,7 +32,8 @@ def diffSelect (count range : Nat) : IO (List Nat) := do
       result := e :: result
 
   return result
-  where extractOne (univ : List Nat) : IO (Option Nat × List Nat) := do
+where
+  extractOne (univ : List Nat) : IO (Option Nat × List Nat) := do
     if univ == [] then
       return (none, [])
 

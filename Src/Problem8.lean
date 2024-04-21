@@ -9,7 +9,8 @@ def compress (l : List α) : List α :=
   match l with
   | [] => []
   | a :: b => a :: comp' b a
-  where comp' (ls : List α) (x : α) : List α :=
+where
+  comp' (ls : List α) (x : α) : List α :=
     match ls with
     | [] => []
     | a' :: l' =>
