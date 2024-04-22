@@ -9,10 +9,10 @@ Example: `m = 10`: `r = 1, 3, 7, 9`; thus `phi(m) = 4`. Note the special case: `
 
 def totient (m : Nat) : Nat :=
   -- sorry
-  let numbers := List.range (m + 1)
+  let coprimes := List.range (m + 1)
     |>.drop 1
-    |>.filter (fun r => Nat.gcd r m == 1)
-  numbers.length
+    |>.filter (Nat.gcd · m == 1)
+  coprimes.length
   -- sorry
 
 -- The following codes are for test and you should not edit these.
