@@ -3,10 +3,9 @@
 (Intermediate 🌟🌟) Flatten a nested list structure.
 -/
 
--- We have to define a new data type, because lists in Lean are homogeneous.
-
 variable {α : Type}
 
+-- We have to define a new data type, because lists in Lean are homogeneous.
 inductive NestedList (α : Type) where
   | elem : α → NestedList α
   | list : List (NestedList α) → NestedList α
@@ -15,11 +14,11 @@ section
   /-!
   ## Pretty printing of NestedList
   Display `NestedList` in a readable manner when you run `#eval`.
-  When solving this problem, do not mind the contents of this section.
+  When solving this problem, **do not mind** the contents of this section.
 
   The following code was provided by Mario Carneiro.
   -/
-  open Std
+  open Std in
 
   partial def NestedList.repr [Repr α] (a : NestedList α) (n : Nat) : Format :=
     let _ : ToFormat (NestedList α) := ⟨(NestedList.repr · 0)⟩
@@ -31,7 +30,16 @@ section
     reprPrec := NestedList.repr
 end
 
--- Here is an example of how to use the `NestedList` type.
+/-- flatten the list structure -/
+def flatten (nl : NestedList α) : List α :=
+  -- sorry
+  match nl with
+  | .elem x => [x]
+  | .list [] => []
+  | .list (x :: xs) => flatten x ++ flatten (.list xs)
+  -- sorry
+
+-- The following codes are for test and you should not edit these.
 
 open NestedList
 
@@ -43,17 +51,6 @@ def sample : NestedList Nat :=
 def empty : NestedList String := list []
 
 #eval empty
-
-/-- flatten the list structure -/
-def flatten (nl : NestedList α) : List α :=
-  -- sorry
-  match nl with
-  | elem x => [x]
-  | list [] => []
-  | list (x :: xs) => flatten x ++ flatten (list xs)
-  -- sorry
-
--- The following codes are for test and you should not edit these.
 
 example : flatten (elem 5) = [5] := rfl
 
