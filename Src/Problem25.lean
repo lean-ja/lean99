@@ -32,8 +32,7 @@ def List.isPerm [BEq α] : List α → List α → Bool
 
 def runTest [ToString α] (l : List α) : IO Unit := do
   let result ← rndPermu l
-  let mut check := true
-  check := check && result.isPerm l
+  let check := result.isPerm l
 
   if l.length >= 30 then
     let result' ← rndPermu l

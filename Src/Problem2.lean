@@ -12,9 +12,7 @@ def myButLast (l : List α) : Option α :=
     none
   else
     let i := l.length - 2;
-    match l[i]? with
-    | some x => some x
-    | none => none
+    l[i]?
   -- sorry
 
 -- The following codes are for test and you should not edit these.

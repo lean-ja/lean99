@@ -47,9 +47,8 @@ where
 
 def runTest (count range : Nat) : IO Unit := do
   let result ← diffSelect count range
-  let mut check := true
-  check := check && result.eraseDups.length == count
-  check := check && result.all (List.nrange range).contains
+  let check := result.eraseDups.length == count
+    |> (· && result.all (List.nrange range).contains)
   if check then
     IO.println "ok!"
   else

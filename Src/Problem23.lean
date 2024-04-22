@@ -22,9 +22,8 @@ def rndSelect (l : List α) (n : Nat) : IO (List α) := do
 
 def runTest [BEq α] [ToString α] (l : List α) (n : Nat) : IO Unit := do
   let result ← rndSelect l n
-  let mut check := true
-  check := check && result.length == n
-  check := check && result.all l.contains
+  let check := result.length == n
+    |> (· && result.all l.contains)
   if check then
     IO.println s!"ok!"
   else
