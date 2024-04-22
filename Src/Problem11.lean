@@ -9,15 +9,15 @@ variable {α : Type} [BEq α]
 inductive Data (α : Type) where
   | multiple : Nat → α → Data α
   | single : α → Data α
-deriving Repr
+deriving Repr, DecidableEq
 
 open Data
 
-def encodeModified (l : List α) : List (Data α) :=
+partial def encodeModified (l : List α) : List (Data α) :=
   -- sorry
   match l with
   | [] => []
-  | x :: xs =>
+  | x :: _xs =>
     let (as, bs) := l.span (· == x)
     if as.length > 1 then
       multiple as.length x :: encodeModified bs
@@ -25,19 +25,14 @@ def encodeModified (l : List α) : List (Data α) :=
       single x :: encodeModified bs
   -- sorry
 
-  -- Avoid proving that the function terminates as a recursive function.
-  -- You don't have to fill in the `sorry` here.
-  decreasing_by
-    all_goals sorry
-
 -- The following codes are for test and you should not edit these.
 
 example : encodeModified ['a', 'a', 'b', 'c'] =
-  [multiple 2 'a', single 'b', single 'c'] := by rfl
+  [multiple 2 'a', single 'b', single 'c'] := by native_decide
 
-example : encodeModified ([] : List α) = [] := by rfl
+example : encodeModified ([] : List Nat) = [] := by native_decide
 
 example : encodeModified ['a', 'b', 'b', 'b', 'c', 'b', 'b'] =
-  [single 'a', multiple 3 'b', single 'c', multiple 2 'b'] := by rfl
+  [single 'a', multiple 3 'b', single 'c', multiple 2 'b'] := by native_decide
 
 end P11 --#

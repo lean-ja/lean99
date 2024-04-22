@@ -5,7 +5,7 @@
 Construct a flat list containing the prime factors in ascending order.
 -/
 
-def primeFactors (n : Nat) : List Nat :=
+partial def primeFactors (n : Nat) : List Nat :=
   -- sorry
   loop n 2 [] |>.reverse
 where
@@ -16,8 +16,6 @@ where
       loop (tgt / candidate) candidate <| candidate :: acc
     else
       loop tgt (candidate + 1) acc
-
-    decreasing_by all_goals sorry
   -- sorry
 
 -- The following codes are for test and you should not edit these.
