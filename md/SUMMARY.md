@@ -45,3 +45,4 @@
 * [34: Euler's totient](./build/Problem34.md)
 * [35: Prime factors](./build/Problem35.md)
 * [36: Prime factors multiplicity](./build/Problem36.md)
+* [37: Euler's totient improved](./build/Problem37.md)
