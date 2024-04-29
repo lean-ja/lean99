@@ -1,10 +1,10 @@
 /-
 # Problem 34
-(Intermediate 🌟🌟) Calculate Euler's totient function `phi(m)`.
+(Intermediate 🌟🌟) Calculate Euler's totient function `φ(m)`.
 
-Euler's so-called totient function `phi(m)` is defined as the number of positive integers `r (1 <= r < m)` that are coprime to `m`.
+Euler's so-called totient function `φ(m)` is defined as the number of positive integers `r (1 <= r < m)` that are coprime to `m`.
 
-Example: `m = 10`: `r = 1, 3, 7, 9`; thus `phi(m) = 4`. Note the special case: `phi(1) = 1`.
+Example: `m = 10`: `r = 1, 3, 7, 9`; thus `φ(m) = 4`. Note the special case: `φ(1) = 1`.
 -/
 
 def totient (m : Nat) : Nat :=
