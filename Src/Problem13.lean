@@ -1,6 +1,6 @@
 /-
 # Problem 13
-(Intermediate 🌟🌟) Implement the so-called run-length encoding data compression method directly. I.e. don't explicitly create the sublists containing the duplicates, as in problem 9, but only count them. As in problem P11, simplify the result list by replacing the singleton lists `(1 X)` by `X`.
+(Intermediate 🌟🌟) Implement the so-called run-length encoding data compression method directly. I.e. don't explicitly create the sublists containing the duplicates, as in [Problem 9](./Problem9.md), but only count them. As in [Problem 11](./Problem11.md), simplify the result list by replacing the singleton lists `(1 X)` by `X`.
 -/
 namespace P13 --#
 
