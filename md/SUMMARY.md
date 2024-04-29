@@ -28,7 +28,7 @@
 * [19: Rotate a list](./build/Problem19.md)
 * [20: Remove the K'th element](./build/Problem20.md)
 
-# 21-30: Lists again
+# 21-28: Lists again
 
 * [21: Insert an element](./build/Problem21.md)
 * [22: Integers within a range](./build/Problem22.md)
@@ -37,7 +37,7 @@
 * [25: Random permutation](./build/Problem25.md)
 * [26: Generate combinations](./build/Problem26.md)
 
-# 31-40: Arithmetic
+# 31-41: Arithmetic
 
 * [31: Prime number detection](./build/Problem31.md)
 * [32: Euclid's algorithm](./build/Problem32.md)
