@@ -36,6 +36,7 @@
 * [24: Draw N diffrent random numbers](./build/Problem24.md)
 * [25: Random permutation](./build/Problem25.md)
 * [26: Generate combinations](./build/Problem26.md)
+* [27: Group into disjoint subsets](./build/Problem27.md)
 
 # 31-41: Arithmetic
 
