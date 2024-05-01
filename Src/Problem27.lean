@@ -59,7 +59,7 @@ def Nat.factorial (n : Nat) : Nat :=
   | 0 => 1
   | n + 1 => (n + 1) * n.factorial
 
-def runTest [ToString α] [BEq <| List (List α)] (pattern : List Nat) (xs : List α) : IO Unit := do
+def runTest [ToString α] [BEq α] (pattern : List Nat) (xs : List α) : IO Unit := do
   if pattern.foldl (· + ·) 0 != xs.length then
     throw <| IO.userError s!"invalid test case: the sum of pattern should be equal to the length of the input list."
 
