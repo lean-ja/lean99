@@ -2,6 +2,8 @@
 (Intermediate 🌟🌟) Group the elements of a set into disjoint subsets.
 
 Write a function that generates all the possibilities and returns them in a list.
+
+> **Note**: Originally there were two questions, (a) and (b), but I omitted (a) because it is a special case of (b).
 -/
 universe u
 variable {α : Type}
