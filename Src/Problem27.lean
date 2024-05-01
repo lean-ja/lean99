@@ -42,9 +42,13 @@ def group (pattern : List Nat) (xs : List α): List <| List <| List α :=
     pure <| g :: gs
   -- sorry
 
--- The following codes are for test and you should not edit these.
-
 #guard group [1, 2] [1, 2, 3] = [[[1], [2, 3]], [[2], [1, 3]], [[3], [1, 2]]]
+
+#guard group [2, 1] [2, 4, 6] = [[[2, 4], [6]], [[2, 6], [4]], [[4, 6], [2]]]
+
+#guard group [1, 1] [1, 2] = [[[1], [2]], [[2], [1]]]
+
+-- The following codes are for test and you should not edit these.
 
 /-- pattern of 2D `List` -/
 def List.pattern (xs : List (List α)) : List Nat :=
