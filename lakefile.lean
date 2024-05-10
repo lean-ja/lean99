@@ -17,7 +17,7 @@ require «mk-exercise» from git
   "https://github.com/Seasawher/mk-exercise" @ "main"
 
 require mdgen from git
-  "https://github.com/Seasawher/mdgen" @ "v1.1.0"
+  "https://github.com/Seasawher/mdgen" @ "main"
 
 def runCmd (cmd : String) (args : Array String) : ScriptM Bool := do
   let out ← IO.Process.output {
