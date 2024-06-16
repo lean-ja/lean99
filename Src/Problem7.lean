@@ -52,8 +52,8 @@ def empty : NestedList String := list []
 
 #eval empty
 
-example : flatten (elem 5) = [5] := rfl
+example : flatten (.elem 5) = [5] := by rfl
 
-example : flatten sample = [1, 2, 3, 4] := rfl
+example : flatten sample = [1, 2, 3, 4] := by rfl
 
-example : flatten (empty) = [] := rfl
+example : flatten (empty) = [] := by rfl
