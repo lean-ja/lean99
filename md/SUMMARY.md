@@ -37,6 +37,7 @@
 * [25: Random permutation](./build/Problem25.md)
 * [26: Generate combinations](./build/Problem26.md)
 * [27: Group into disjoint subsets](./build/Problem27.md)
+* [28A: Sorting a list of lists](./build/Problem28.md)
 
 # 31-41: Arithmetic
 
