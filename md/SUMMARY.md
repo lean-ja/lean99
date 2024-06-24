@@ -50,3 +50,4 @@
 * [36: Prime factors multiplicity](./build/Problem36.md)
 * [37: Euler's totient improved](./build/Problem37.md)
 * [38: Compare totient calculations]()
+* [39: Prime numbers in a range](./build/Problem39.md)
