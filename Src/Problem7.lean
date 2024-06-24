@@ -10,25 +10,14 @@ inductive NestedList (α : Type) where
   | elem : α → NestedList α
   | list : List (NestedList α) → NestedList α
 
-section
-  /-!
-  ## Pretty printing of NestedList
-  Display `NestedList` in a readable manner when you run `#eval`.
-  When solving this problem, **do not mind** the contents of this section.
+/-- convert NestedList to String. -/
+partial def NestedList.toString [ToString α] : NestedList α → String
+  | NestedList.elem x => ToString.toString x
+  | NestedList.list xs => "[" ++ String.intercalate ", " (xs.map toString) ++ "]"
 
-  The following code was provided by Mario Carneiro.
-  -/
-  open Std in
-
-  partial def NestedList.repr [Repr α] (a : NestedList α) (n : Nat) : Format :=
-    let _ : ToFormat (NestedList α) := ⟨(NestedList.repr · 0)⟩
-    match a, n with
-    | elem x, _ => reprPrec x n
-    | list as, _ => Format.bracket "[" (Format.joinSep as ("," ++ Format.line)) "]"
-
-  instance [Repr α] : Repr (NestedList α) where
-    reprPrec := NestedList.repr
-end
+/-- Display `NestedList` in a readable manner when you run `#eval`. -/
+instance [ToString α] : ToString (NestedList (α : Type)) where
+  toString nl := NestedList.toString nl
 
 /-- flatten the list structure -/
 def flatten (nl : NestedList α) : List α :=
