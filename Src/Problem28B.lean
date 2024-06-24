@@ -1,20 +1,11 @@
 /- # Problem 28B
-b) Again, we suppose that a list contains elements that are lists themselves. But this time the objective is to sort the elements of this list according to their **length frequency**; i.e., in the default, where sorting is done ascendingly, lists with rare lengths are placed first, others with a more frequent length come later.
 
-Example:
-
-\* (lfsort '((a b c) (d e) (f g h) (d e) (i j k l) (m n) (o)))
-((i j k l) (o) (a b c) (f g h) (d e) (d e) (m n))
-
-Example in Haskell:
-
-λ\> lfsort \["abc", "de", "fgh", "de", "ijkl", "mn", "o"\]
-\["ijkl","o","abc","fgh","de","de","mn"\]
+Again, we suppose that a list contains elements that are lists themselves. But this time the objective is to sort the elements of this list according to their **length frequency**; i.e., in the default, where sorting is done ascendingly, lists with rare lengths are placed first, others with a more frequent length come later.
 -/
 variable {α : Type}
 
--- def count [BEq] (l : List α)
-
+/-- Insert an element in a way that
+does not break the order of the sorted list. -/
 def orderedInsert (a : α) (ord : α → Nat) : List α → List α
   | [] => [a]
   | b :: l =>
@@ -26,15 +17,21 @@ def insertionSort (ord : α → Nat) : List α → List α
   | [] => []
   | b :: l => orderedInsert b ord <| insertionSort ord l
 
-/-- リストのリスト l の中で target と同じ長さのものが何個あるか数える -/
+-- You can use this!
+#check insertionSort
+--#--
+/-- Count the number of lists in list `l` that have the same length as `target` -/
 def makeToLengthFreq (l : List (List α)) (target : List α) : Nat :=
   let lengthList := l.map (·.length)
   lengthList.filter (· = target.length) |>.length
-
-#guard makeToLengthFreq [[1, 2, 3], [2, 3], [1], [0], [2]] (target := [1]) = 3
+--#--
 
 def lfsort (l : List (List α)) : List (List α) :=
+  -- sorry
   insertionSort (makeToLengthFreq l) l
+  -- sorry
+
+-- The following codes are for test and you should not edit these.
 
 #guard lfsort ([[]] : List (List String)) = [[]]
 
