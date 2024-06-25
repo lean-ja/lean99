@@ -1,6 +1,6 @@
-# Lean 99: Ninety-Nine Lean Probelms
+# Lean 99: Ninety-Nine Lean Problems
 
-These are Lean translations of [Ninety-Nine Haskell Problems](https://wiki.haskell.org/H-99:_Ninety-Nine_Haskell_Problems), which are themselves translations of [Ninety-Nine Lisp Probelms](https://www.ic.unicamp.br/~meidanis/courses/mc336/problemas-lisp/L-99_Ninety-Nine_Lisp_Problems.html).
+These are Lean translations of [Ninety-Nine Haskell Problems](https://wiki.haskell.org/H-99:_Ninety-Nine_Haskell_Problems), which are themselves translations of [Ninety-Nine Lisp Problems](https://www.ic.unicamp.br/~meidanis/courses/mc336/problemas-lisp/L-99_Ninety-Nine_Lisp_Problems.html).
 
 ## Contributing
 
