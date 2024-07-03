@@ -52,3 +52,8 @@
 * [38: Compare totient calculations]()
 * [39: Prime numbers in a range](./build/Problem39.md)
 * [40: Goldbach's conjecture](./build/Problem40.md)
+* [41: Goldbach's list](./build/Problem41.md)
+
+# 46-50: Logic and codes
+
+* [46: Truth table](./build/Problem46.md)
