@@ -3,17 +3,24 @@
 (Intermediate 🌟🌟) Goldbach's conjecture says that every positive even number greater than `2` is the sum of two prime numbers. Example: `28 = 5 + 23`. It is one of the most famous facts in number theory that has not been proved to be correct in the general case. It has been numerically confirmed up to very large numbers (much larger than we can go with our Prolog system). Write a predicate to find the two prime numbers that sum up to a given even integer.
 -/
 
-def Nat.isPrime (n : Nat) : Bool :=
-  if n == 0 || n == 1 then
-    false
-  else
-    let properDivisors := List.range n
-      |>.drop 2
-      |>.filter (n % · == 0)
-    properDivisors.length == 0
+def Nat.isPrime (n : Nat) : Bool := Id.run do
+  if n ≤ 2 then
+    return false
+  for d in [2:n] do
+    if n % d = 0 then
+      return false
+    if d ^ 2 > n then
+      break
+  return true
+
+-- You can use this!
+#check Nat.isPrime
 
 def goldbach (n : Nat) : Nat × Nat := Id.run do
   -- sorry
+  if n % 2 ≠ 0 then
+    panic! "n must be an even number"
+
   for cand in (List.range n) do
     if not cand.isPrime then
       continue
@@ -41,3 +48,5 @@ def goldbachTest (n : Nat) : IO Unit :=
 #eval goldbachTest 308
 
 #eval goldbachTest 308000
+
+#eval goldbachTest 19278020
