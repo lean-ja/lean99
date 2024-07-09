@@ -43,7 +43,7 @@ def tablen (n : Nat) (p : Arity n) : List (List Bool) :=
   [false, false, true]
 ]
 
-#eval tablen 3 (fun a b c => a && b && c) = [
+#guard tablen 3 (fun a b c => a && b && c) = [
   [true, true, true, true],
   [true, true, false, false],
   [true, false, true, false],
