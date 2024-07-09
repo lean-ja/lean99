@@ -57,3 +57,5 @@
 # 46-50: Logic and codes
 
 * [46: Truth table](./build/Problem46.md)
+* [47: Truth table part2](./build/Problem47.md)
+* [48: Truth table in general](./build/Problem48.md)
