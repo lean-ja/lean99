@@ -21,7 +21,7 @@ def goldbach (n : Nat) : Nat × Nat := Id.run do
   if n % 2 ≠ 0 then
     panic! "n must be an even number"
 
-  for cand in (List.range n) do
+  for cand in [2:n] do
     if not cand.isPrime then
       continue
     let rest := n - cand
