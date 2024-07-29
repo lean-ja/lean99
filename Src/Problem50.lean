@@ -1,27 +1,5 @@
 set_option autoImplicit false
 
-def plain := "BACADAEAFABBAAAGAH"
-
-def Encoder := Char → String
-
-def encoder₁ : Encoder
-  | 'A' => "000" | 'B' => "001" | 'C' => "010" | 'D' => "011"
-  | 'E' => "100" | 'F' => "101" | 'G' => "110" | 'H' => "111"
-  | _ => ""
-
-def encode (f : Encoder) (p : String) : String :=
-  p.data.foldl (fun acc x => acc ++ f x) ""
-
-def encoder₂ : Encoder
-  | 'A' => "0" | 'B' => "100" | 'C' => "1010" | 'D' => "1011"
-  | 'E' => "1100" | 'F' => "1101" | 'G' => "1110" | 'H' => "1111"
-  | _ => ""
-
-#guard encode encoder₁ plain =
-  "001000010000011000100000101000001001000000000110000111"
-#guard encode encoder₂ plain =
-  "100010100101101100011010100100000111001111"
-
 inductive HuffTree where
   | Node (left : HuffTree) (right : HuffTree)
   | Leaf (c : Char) (weight : Nat)
@@ -44,15 +22,12 @@ def HuffTree.toString (t : HuffTree) : String :=
 
 instance : ToString HuffTree := ⟨HuffTree.toString⟩
 
-#eval "aaabc".data.eraseDups
-
 def String.freq (s : String) (c : Char) := s.data.filter (· == c) |>.length
 
 def String.toLeaves (s : String) : List HuffTree :=
   let allChars : List Char := s.data.eraseDups
   allChars.map fun c => HuffTree.Leaf c (s.freq c)
 
-#eval plain.toLeaves
 #eval HuffTree.Node (HuffTree.Leaf 'c' 1) (HuffTree.Leaf 'd' 1)
 
 variable {α : Type}
@@ -76,11 +51,8 @@ def HuffTree.weight : HuffTree → Nat
 
 def HuffTree.sort (trees : List HuffTree) : List HuffTree := insertionSort (HuffTree.weight) trees
 
-#eval plain.toLeaves |> HuffTree.sort
-
 partial def HuffTree.merge (leaves : List HuffTree) : List HuffTree :=
   let sorted := leaves |> HuffTree.sort
-  dbg_trace sorted
   match sorted with
   | [] => []
   | [tree] => [tree]
@@ -91,4 +63,17 @@ partial def HuffTree.merge (leaves : List HuffTree) : List HuffTree :=
 def HuffTree.ofString (msg : String) : HuffTree :=
   msg.toLeaves |> HuffTree.merge |>.head!
 
-#eval HuffTree.ofString plain
+def HuffTree.encode (c : Char) : HuffTree → Option String
+  | .Leaf c' _ => if c = c' then some "" else none
+  | .Node l r =>
+    match r.encode c with
+    | none => l.encode c |>.map ("0" ++ ·)
+    | some s => "1" ++ s
+
+def huffman (input : List (Char × Nat)) : List (Char × String) :=
+  let leaves : List HuffTree := input.map (fun (c, w) => HuffTree.Leaf c w)
+  let tree : HuffTree := HuffTree.merge leaves |>.head!
+  input.map (fun (c, _) => (c, tree.encode c |>.get!))
+
+#guard huffman [('a',45),('b',13),('c',12),('d',16),('e',9),('f',5)] =
+  [('a',"0"),('b',"101"),('c',"100"),('d',"111"),('e',"1101"),('f',"1100")]
