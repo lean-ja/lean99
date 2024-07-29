@@ -14,7 +14,7 @@ def BinTree.depth {α : Type} : BinTree α → Nat
 def BinTree.isBalanced {α : Type} : BinTree α → Bool
   | .Empty => true
   | .Node _ l r =>
-    if !(l.isBalanced ∧ r.isBalanced) then false else
+    l.isBalanced ∧ r.isBalanced ∧
     Int.natAbs ((l.depth : Int) - (r.depth : Int)) ≤ 1
 
 def leaf {α : Type} (a : α) : BinTree α := .Node a .Empty .Empty
