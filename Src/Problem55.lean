@@ -35,3 +35,25 @@ def badTree : BinTree Nat :=
   (leaf 2)
 
 #eval badTree.isBalanced
+
+universe u
+
+/-- monad instance of `List` -/
+instance : Monad List.{u} where
+  pure := @List.pure
+  bind := @List.bind
+  map := @List.map
+
+partial def cbalTree : Nat → List (BinTree Unit)
+| 0 => [.Empty]
+| n + 1 => do
+  let q := n / 2
+  let r := n % 2
+  let indices := List.range (q+r+1) |>.drop q
+  let i ← indices
+  let left ← cbalTree i
+  let right ← cbalTree (n - i)
+  pure (BinTree.Node () left right)
+
+#eval (cbalTree 4)
+#eval (cbalTree 6)|>.map BinTree.isBalanced
