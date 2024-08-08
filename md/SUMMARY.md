@@ -60,3 +60,4 @@
 * [47: Truth table part2](./build/Problem47.md)
 * [48: Truth table in general](./build/Problem48.md)
 * [49: Gray code](./build/Problem49.md)
+* [50: Huffman code](./build/Problem50.md)

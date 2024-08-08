@@ -1,79 +1,93 @@
-set_option autoImplicit false
+/- # Problem 50
+(Hard 🌟🌟🌟) Huffman codes.
 
+We suppose a set of symbols with their frequencies, given as a list of `fr(S,F)` terms.
+
+Example: `[fr(a,45), fr(b,13), fr(c,12), fr(d,16), fr(e,9), fr(f,5)]`.
+
+Our objective is to construct a list `hc(S,C)` terms, where `C` is the Huffman code word for the symbol `S`.
+-/
+
+/-- Insert an element in a way that
+does not break the order of the sorted list. -/
+def orderedInsert {α : Type} [Ord α] (a : α) : List α → List α
+  | [] => [a]
+  | b :: l =>
+    match compare a b with
+    | .lt => a :: b :: l
+    | _ => b :: orderedInsert a l
+
+/-- insertion sort -/
+def insertionSort {α : Type} [Ord α] : List α → List α
+  | [] => []
+  | b :: l => orderedInsert b (insertionSort l)
+
+-- You can use this!
+#check insertionSort
+
+
+/-- Huffman Tree -/
 inductive HuffTree where
-  | Node (left : HuffTree) (right : HuffTree)
+  | Node (left : HuffTree) (right : HuffTree) (weight : Nat)
   | Leaf (c : Char) (weight : Nat)
-deriving Inhabited
+deriving Inhabited, Repr
 
-def HuffTree.toString' : HuffTree → String × Nat
-  | .Leaf c w => (c.toString, w)
-  | .Node l r =>
-    let (ls, lw) := l.toString'
-    let (rs, rw) := r.toString'
-    (ls ++ rs, lw + rw)
+def HuffTree.weight : HuffTree → Nat
+  | Leaf _ w => w
+  | Node _ _ w => w
 
-def HuffTree.toString (t : HuffTree) : String :=
-  match t with
-  | .Leaf c w => s!"({c} {w})"
-  | .Node _ _ =>
-    let (s, w) := t.toString'
-    let s' := " ".intercalate <| s.data.map (·.toString)
-    "({" ++ s' ++ "} " ++ ToString.toString w ++ ")"
+def HuffTree.compare (s s' : HuffTree) : Ordering :=
+  let w := s.weight
+  let w' := s'.weight
+  Ord.compare w w'
 
-instance : ToString HuffTree := ⟨HuffTree.toString⟩
+instance : Ord HuffTree where
+  compare := HuffTree.compare
 
+def HuffTree.sort (trees : List HuffTree) : List HuffTree := insertionSort trees
+
+--#--
 def String.freq (s : String) (c : Char) := s.data.filter (· == c) |>.length
 
 def String.toLeaves (s : String) : List HuffTree :=
   let allChars : List Char := s.data.eraseDups
   allChars.map fun c => HuffTree.Leaf c (s.freq c)
 
-#eval HuffTree.Node (HuffTree.Leaf 'c' 1) (HuffTree.Leaf 'd' 1)
-
-variable {α : Type}
-
-/-- Insert an element in a way that
-does not break the order of the sorted list. -/
-def orderedInsert (a : α) (ord : α → Nat) : List α → List α
-  | [] => [a]
-  | b :: l =>
-    if ord a ≤ ord b then a :: b :: l
-    else b :: orderedInsert a ord l
-
-/-- insertion sort -/
-def insertionSort (ord : α → Nat) : List α → List α
-  | [] => []
-  | b :: l => orderedInsert b ord <| insertionSort ord l
-
-def HuffTree.weight : HuffTree → Nat
-  | Leaf _ w => w
-  | Node l r => l.weight + r.weight
-
-def HuffTree.sort (trees : List HuffTree) : List HuffTree := insertionSort (HuffTree.weight) trees
-
-partial def HuffTree.merge (leaves : List HuffTree) : List HuffTree :=
-  let sorted := leaves |> HuffTree.sort
+partial def HuffTree.merge (trees : List HuffTree) : List HuffTree :=
+  let sorted := HuffTree.sort trees
   match sorted with
   | [] => []
   | [tree] => [tree]
   | t1 :: t2 :: rest =>
-    let t' := HuffTree.Node t1 t2
+    let t' := HuffTree.Node t1 t2 (t1.weight + t2.weight)
     HuffTree.merge (t' :: rest)
 
+-- This function is not used in the solution
 def HuffTree.ofString (msg : String) : HuffTree :=
   msg.toLeaves |> HuffTree.merge |>.head!
-
-def HuffTree.encode (c : Char) : HuffTree → Option String
+--#--
+abbrev Code := String
+--#--
+def HuffTree.encode (c : Char) : HuffTree → Option Code
   | .Leaf c' _ => if c = c' then some "" else none
-  | .Node l r =>
-    match r.encode c with
-    | none => l.encode c |>.map ("0" ++ ·)
-    | some s => "1" ++ s
+  | .Node l r _w =>
+    match l.encode c, r.encode c with
+    | none, some s => some ("1" ++ s)
+    | some s, none => some ("0" ++ s)
+    | _, _ => none
+--#--
 
-def huffman (input : List (Char × Nat)) : List (Char × String) :=
+def huffman (input : List (Char × Nat)) : List (Char × Code) :=
+  -- sorry
   let leaves : List HuffTree := input.map (fun (c, w) => HuffTree.Leaf c w)
   let tree : HuffTree := HuffTree.merge leaves |>.head!
   input.map (fun (c, _) => (c, tree.encode c |>.get!))
+  -- sorry
 
-#guard huffman [('a',45),('b',13),('c',12),('d',16),('e',9),('f',5)] =
-  [('a',"0"),('b',"101"),('c',"100"),('d',"111"),('e',"1101"),('f',"1100")]
+-- The following codes are for test and you should not edit these.
+
+#guard huffman [('a', 45),('b', 13),('c', 12),('d', 16),('e', 9),('f', 5)] =
+  [('a', "0"),('b', "101"),('c', "100"),('d', "111"),('e', "1101"),('f', "1100")]
+
+#guard huffman [('B', 7),('C', 6),('A', 3),('D', 1),('E', 1),] =
+  [('B', "0"), ('C', "11"), ('A', "101"), ('D', "1001"), ('E', "1000")]
