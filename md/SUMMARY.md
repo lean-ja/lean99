@@ -61,3 +61,8 @@
 * [48: Truth table in general](./build/Problem48.md)
 * [49: Gray code](./build/Problem49.md)
 * [50: Huffman code](./build/Problem50.md)
+
+# 54-60: Binary trees
+
+* [54: check binary tree]()
+* [55: list up balanced binary tree](./build/Problem55.md)
