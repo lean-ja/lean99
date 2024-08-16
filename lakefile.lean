@@ -14,7 +14,7 @@ lean_lib «Src» where
   -- add library configuration options here
 
 require «mk-exercise» from git
-  "https://github.com/Seasawher/mk-exercise" @ "main"
+  "https://github.com/Seasawher/mk-exercise" @ "lean/v4.10.0"
 
 require mdgen from git
   "https://github.com/Seasawher/mdgen" @ "main"
