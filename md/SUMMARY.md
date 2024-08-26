@@ -66,3 +66,6 @@
 
 * [54: check binary tree]()
 * [55: list up balanced binary tree](./build/Problem55.md)
+* [56: symmetric binary tree](./build/Problem56.md)
+* [57: binary search tree](./build/Problem57.md)
+* [58: Generate symmetric balanced binary trees](./build/Problem58.md)
