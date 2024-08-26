@@ -29,6 +29,7 @@ instance : Monad List where
   bind := @List.bind
   map := @List.map
 
+/-- construct all balanced binary trees which contains `x` elements -/
 partial def cbalTree (x : Nat) : List (BinTree Unit) :=
   -- sorry
   match x with

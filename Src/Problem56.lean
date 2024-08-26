@@ -10,6 +10,19 @@ deriving Repr
 
 def leaf {α : Type} (a : α) : BinTree α := .Node a .Empty .Empty
 
+/-- This is used to display `#check` results -/
+@[app_unexpander BinTree.Node]
+def leaf.unexpander : Lean.PrettyPrinter.Unexpander
+  | `($_ $a BinTree.Empty BinTree.Empty) => `(leaf $a)
+  | _ => throw ()
+
+/-- Use `leaf` to display `#eval` results -/
+def BinTree.toString {α : Type} [ToString α] (t : BinTree α) : String :=
+  match t with
+  | .Node v .Empty .Empty => s!"leaf {v}"
+  | .Node v l r => s!"BinTree.Node {v} ({toString l}) ({toString r})"
+  | .Empty => "Empty"
+
 variable {α : Type}
 
 def BinTree.mirror (s t : BinTree α) : Bool :=
