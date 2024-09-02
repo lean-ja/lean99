@@ -65,4 +65,8 @@
 # 54-60: Binary trees
 
 * [54: check binary tree]()
-* [55: list up balanced binary tree](./build/Problem55.md)
+* [55: List up balanced binary tree](./build/Problem55.md)
+* [56: Symmetric binary tree](./build/Problem56.md)
+* [57: Binary search tree](./build/Problem57.md)
+* [58: List up symmetric balanced binary trees](./build/Problem58.md)
+* [59: List up balanced binary trees with given hight](./build/Problem59.md)

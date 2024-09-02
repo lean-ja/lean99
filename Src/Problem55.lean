@@ -7,19 +7,19 @@ Write a function `cbalTree` to construct completely balanced binary trees for a 
 -/
 
 inductive BinTree (α : Type) where
-  | Empty : BinTree α
-  | Node : α → BinTree α → BinTree α → BinTree α
+  | empty : BinTree α
+  | node : α → BinTree α → BinTree α → BinTree α
 deriving Repr
 
-def leaf {α : Type} (a : α) : BinTree α := .Node a .Empty .Empty
+def leaf {α : Type} (a : α) : BinTree α := .node a .empty .empty
 
 def BinTree.depth {α : Type} : BinTree α → Nat
-| .Empty => 0
-| .Node _ l r => 1 + max l.depth r.depth
+| .empty => 0
+| .node _ l r => 1 + max l.depth r.depth
 
 def BinTree.isBalanced {α : Type} : BinTree α → Bool
-  | .Empty => true
-  | .Node _ l r =>
+  | .empty => true
+  | .node _ l r =>
     l.isBalanced ∧ r.isBalanced ∧
     Int.natAbs ((l.depth : Int) - (r.depth : Int)) ≤ 1
 
@@ -29,10 +29,11 @@ instance : Monad List where
   bind := @List.bind
   map := @List.map
 
+/-- construct all balanced binary trees which contains `x` elements -/
 partial def cbalTree (x : Nat) : List (BinTree Unit) :=
   -- sorry
   match x with
-  | 0 => [.Empty]
+  | 0 => [.empty]
   | n + 1 => do
     let q := n / 2
     let r := n % 2
@@ -40,7 +41,7 @@ partial def cbalTree (x : Nat) : List (BinTree Unit) :=
     let i ← indices
     let left ← cbalTree i
     let right ← cbalTree (n - i)
-    pure (BinTree.Node () left right)
+    pure (BinTree.node () left right)
   -- sorry
 
 -- The following codes are for test and you should not edit these.

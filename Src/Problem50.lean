@@ -28,13 +28,13 @@ def insertionSort {α : Type} [Ord α] : List α → List α
 
 /-- Huffman Tree -/
 inductive HuffTree where
-  | Node (left : HuffTree) (right : HuffTree) (weight : Nat)
+  | node (left : HuffTree) (right : HuffTree) (weight : Nat)
   | Leaf (c : Char) (weight : Nat)
 deriving Inhabited, Repr
 
 def HuffTree.weight : HuffTree → Nat
   | Leaf _ w => w
-  | Node _ _ w => w
+  | node _ _ w => w
 
 def HuffTree.compare (s s' : HuffTree) : Ordering :=
   let w := s.weight
@@ -59,7 +59,7 @@ partial def HuffTree.merge (trees : List HuffTree) : List HuffTree :=
   | [] => []
   | [tree] => [tree]
   | t1 :: t2 :: rest =>
-    let t' := HuffTree.Node t1 t2 (t1.weight + t2.weight)
+    let t' := HuffTree.node t1 t2 (t1.weight + t2.weight)
     HuffTree.merge (t' :: rest)
 
 -- This function is not used in the solution
@@ -70,7 +70,7 @@ abbrev Code := String
 --#--
 def HuffTree.encode (c : Char) : HuffTree → Option Code
   | .Leaf c' _ => if c = c' then some "" else none
-  | .Node l r _w =>
+  | .node l r _w =>
     match l.encode c, r.encode c with
     | none, some s => some ("1" ++ s)
     | some s, none => some ("0" ++ s)
