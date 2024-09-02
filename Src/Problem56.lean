@@ -4,40 +4,46 @@ Let us call a binary tree symmetric if you can draw a vertical line through the 
 -/
 
 inductive BinTree (α : Type) where
-  | Empty : BinTree α
-  | Node : α → BinTree α → BinTree α → BinTree α
+  | empty : BinTree α
+  | node : α → BinTree α → BinTree α → BinTree α
 deriving Repr
 
-def leaf {α : Type} (a : α) : BinTree α := .Node a .Empty .Empty
+def leaf {α : Type} (a : α) : BinTree α := .node a .empty .empty
 
 /-- This is used to display `#check` results -/
-@[app_unexpander BinTree.Node]
+@[app_unexpander BinTree.node]
 def leaf.unexpander : Lean.PrettyPrinter.Unexpander
-  | `($_ $a BinTree.Empty BinTree.Empty) => `(leaf $a)
+  | `($_ $a BinTree.empty BinTree.empty) => `(leaf $a)
   | _ => throw ()
 
 /-- Use `leaf` to display `#eval` results -/
 def BinTree.toString {α : Type} [ToString α] (t : BinTree α) : String :=
   match t with
-  | .Node v .Empty .Empty => s!"leaf {v}"
-  | .Node v l r => s!"BinTree.Node {v} ({toString l}) ({toString r})"
-  | .Empty => "Empty"
+  | .node v .empty .empty => s!"leaf {v}"
+  | .node v l r => s!"BinTree.node {v} ({toString l}) ({toString r})"
+  | .empty => "empty"
 
 variable {α : Type}
 
 def BinTree.mirror (s t : BinTree α) : Bool :=
+  -- sorry
   match s, t with
-  | .Empty, .Empty => true
-  | .Node _ a b, .Node _ x y => mirror a y && mirror b x
+  | .empty, .empty => true
+  | .node _ a b, .node _ x y => mirror a y && mirror b x
   | _, _ => false
+  -- sorry
 
 def BinTree.isSymmetric (t : BinTree α) : Bool :=
+  -- sorry
   match t with
-  | .Empty => true
-  | .Node _ l r => mirror l r
+  | .empty => true
+  | .node _ l r => mirror l r
+  -- sorry
+
+-- The following codes are for test and you should not edit these.
 
 #guard BinTree.isSymmetric (leaf 'x')
 
-#guard ! BinTree.isSymmetric (BinTree.Node 'x' (leaf 'x') BinTree.Empty)
+#guard ! BinTree.isSymmetric (BinTree.node 'x' (leaf 'x') BinTree.empty)
 
-#guard BinTree.isSymmetric (BinTree.Node 'x' (leaf 'x') (leaf 'x'))
+#guard BinTree.isSymmetric (BinTree.node 'x' (leaf 'x') (leaf 'x'))

@@ -4,23 +4,23 @@ Use the predicate add/3, developed in chapter 4 of the course, to write a predic
 -/
 
 inductive BinTree (α : Type) where
-  | Empty : BinTree α
-  | Node : α → BinTree α → BinTree α → BinTree α
+  | empty : BinTree α
+  | node : α → BinTree α → BinTree α → BinTree α
 
-def leaf {α : Type} (a : α) : BinTree α := .Node a .Empty .Empty
+def leaf {α : Type} (a : α) : BinTree α := .node a .empty .empty
 
 /-- This is used to display `#check` results -/
-@[app_unexpander BinTree.Node]
+@[app_unexpander BinTree.node]
 def leaf.unexpander : Lean.PrettyPrinter.Unexpander
-  | `($_ $a BinTree.Empty BinTree.Empty) => `(leaf $a)
+  | `($_ $a BinTree.empty BinTree.empty) => `(leaf $a)
   | _ => throw ()
 
 /-- Use `leaf` to display `#eval` results -/
 def BinTree.toString {α : Type} [ToString α] (t : BinTree α) : String :=
   match t with
-  | .Node v .Empty .Empty => s!"leaf {v}"
-  | .Node v l r => s!"BinTree.Node {v} ({toString l}) ({toString r})"
-  | .Empty => "Empty"
+  | .node v .empty .empty => s!"leaf {v}"
+  | .node v l r => s!"BinTree.node {v} ({toString l}) ({toString r})"
+  | .empty => "empty"
 
 instance {α : Type} [ToString α] : ToString (BinTree α) := ⟨BinTree.toString⟩
 
@@ -34,33 +34,39 @@ instance [Ord α] : Max α where
 
 def BinTree.max [Ord α] (t : BinTree α) : Option α :=
   match t with
-  | .Empty => none
-  | .Node v l r =>
+  | .empty => none
+  | .node v l r =>
     let left_max := (max l).getD v
     let right_max := (max r).getD v
     some <| [v, left_max, right_max].foldl Max.max v
 
 def BinTree.searchTree [Ord α] (t : BinTree α) : Bool :=
+  -- sorry
   match t with
-  | .Empty => true
-  | .Node v l r =>
+  | .empty => true
+  | .node v l r =>
     let left_max := (max l).getD v
     let right_max := (max r).getD v
     match compare left_max v, compare v right_max with
     | _, .gt => false
     | .gt, _ => false
     | _, _ => searchTree l && searchTree r
-
-#guard BinTree.Node 3 (.Node 2 (leaf 1) .Empty) (.Node 5 .Empty (leaf 7)) |>.searchTree
+  -- sorry
 
 def BinTree.searchTreeFromList [Ord α] (xs : List α) : BinTree α :=
-  xs.foldl insert BinTree.Empty
+  -- sorry
+  xs.foldl insert BinTree.empty
 where
   insert : BinTree α → α → BinTree α
-  | .Empty, x => leaf x
-  | .Node v l r, x =>
+  | .empty, x => leaf x
+  | .node v l r, x =>
     match compare x v with
-    | .lt => BinTree.Node v (insert l x) r
-    | _ => BinTree.Node v l (insert r x)
+    | .lt => BinTree.node v (insert l x) r
+    | _ => BinTree.node v l (insert r x)
+  -- sorry
+
+-- The following codes are for test and you should not edit these.
+
+#guard BinTree.node 3 (.node 2 (leaf 1) .empty) (.node 5 .empty (leaf 7)) |>.searchTree
 
 #guard BinTree.searchTreeFromList [3, 2, 5, 7, 1] |>.searchTree
