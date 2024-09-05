@@ -26,10 +26,6 @@ partial def rndPermu (l : List α) : IO (List α) := do
 
 -- The following codes are for test and you should not edit these.
 
-def List.isPerm [BEq α] : List α → List α → Bool
-  | [], l₂ => l₂.isEmpty
-  | a :: l₁, l₂ => l₂.contains a && l₁.isPerm (l₂.erase a)
-
 def runTest [ToString α] (l : List α) : IO Unit := do
   let result ← rndPermu l
   let check := result.isPerm l
