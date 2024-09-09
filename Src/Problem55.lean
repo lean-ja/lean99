@@ -36,8 +36,7 @@ partial def cbalTree (x : Nat) : List (BinTree Unit) :=
   | 0 => [.empty]
   | n + 1 => do
     let q := n / 2
-    let r := n % 2
-    let indices := List.range (q+r+1) |>.drop q
+    let indices := if n % 2 = 1 then [q, q+1] else [q]
     let i ← indices
     let left ← cbalTree i
     let right ← cbalTree (n - i)
