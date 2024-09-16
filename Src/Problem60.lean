@@ -66,7 +66,19 @@ def BinTree.height (t : BinTree α) : Nat :=
   | .empty => 0
   | .node _ l r => 1 + max l.height r.height
 
-#eval BinTree.node () (leaf ()) (leaf ())
+def BinTree.isCompletelyBalanced {α : Type} : BinTree α → Bool
+  | .empty => true
+  | .node _ l r =>
+    l.isCompletelyBalanced ∧ r.isCompletelyBalanced ∧
+    Int.natAbs ((l.height : Int) - (r.height : Int)) ≤ 1
+
+def BinTree.isHeightBalanced {α : Type} : BinTree α → Bool
+  | .empty => true
+  | .node _ l r => Int.natAbs ((l.height : Int) - (r.height : Int)) ≤ 1
+
+def BinTree.nodeCount : BinTree α → Nat
+  | .empty => 0
+  | .node _ l r => 1 + l.nodeCount + r.nodeCount
 
 /-- construct all balanced binary trees which contains `x` elements -/
 partial def cbalTree (x : Nat) : List (BinTree Unit) :=
@@ -88,20 +100,6 @@ def List.product (as : List α) (bs : List β) : List (α × β) := do
   let a ← as
   let b ← bs
   return (a, b)
-
-/-- construct all balanced binary trees whose height is `height`. -/
-def hbalTrees (height : Nat) : List (BinTree Unit) :=
-  -- sorry
-  match height with
-  | 0 => [.empty]
-  | 1 => [leaf ()]
-  | h + 2 =>
-    let t1s := hbalTrees (h + 1)
-    let t2s := hbalTrees h
-    let ts := List.product t1s t2s ++ List.product t2s t1s
-    ts.map fun (t1, t2) => BinTree.node () t1 t2
-  -- sorry
-
 
 #eval cbalTree 10
 #eval cbalTree 10 |>.length
@@ -135,29 +133,62 @@ def maxHeight (nodeCount : Nat) : Nat := Nat.log2 nodeCount + 1
 #guard maxHeight 16 = 5
 #guard (cbalTree 16 |>.map (·.height) |>.eraseDups) = [5]
 
-def hbalTreeNodes : (nodeCount : Nat) → List (BinTree Unit) := cbalTree
+/-
+## `hbalTreeNodes` (指定されたノード数の高さ平衡二分木を列挙する関数) の実装
+-/
 
-#eval cbalTree 7
-#guard cbalTree 7 =
-  [BinTree.node () (.node () (leaf ()) (leaf ())) (.node () (leaf ()) (leaf ()))]
-#eval BinTree.node () (.node () (.empty) (leaf ())) (.node () (.node () .empty (leaf ())) (leaf ()))
+/-- hになる2つの数を列挙する補助関数 -/
+def possiblePairs (n : Nat) : List (Nat × Nat) :=
+  let «0..n-1» := List.range n
+  let l := «0..n-1».map (fun x => (n, x))
+  let r := «0..n-1».map (fun x => (x, n))
+  (n, n) :: (l ++ r)
 
+/-- 指定された高さの木を全て列挙する(平衡でなくても構わない) -/
+partial def treeOfHeight : Nat → List (BinTree Unit)
+  | 0 => [.empty]
+  -- | 1 => [leaf ()]
+  | h + 1 => do
+    let (hl, hr) ← possiblePairs h
+    let l ← treeOfHeight hl
+    let r ← treeOfHeight hr
+    return .node () l r
+
+/--
+指定された高さの高さ平衡木を全て列挙する
+(Problem59 の解答は多分間違ってる)
+-/
+partial def hbalTrees : Nat -> List (BinTree Unit)
+  | 0 => [.empty]
+  | 1 => [leaf ()]
+  | h => do
+    let (hl, hr) ← [(h-2, h-1), (h-1, h-1), (h-1, h-2)]
+    let l ← treeOfHeight hl
+    let r ← treeOfHeight hr
+    return .node () l r
+
+/-- 指定されたノード数を持つ、height-balancedな木を全て列挙する -/
+def hbalTreeNodes (nodeCount : Nat) : List (BinTree Unit) :=
+  /-
+    **実装の計画**
+    1. minHeightとmaxHeightを出して、[minHeight, .. , maxHeight]のリストを作る
+    2. `hbalTrees`(高さ平衡木を全列挙する関数)から要素数が`nodeCount`なものだけをfilterする
+  -/
+  sorry
+
+/-- ノード数が7のheight-balancedな木 -/
 def hoge :=
   BinTree.node () (.node () (.empty) (leaf ())) (.node () (.node () .empty (leaf ())) (leaf ()))
 
-def BinTree.isBalanced {α : Type} : BinTree α → Bool
-  | .empty => true
-  | .node _ l r =>
-    l.isBalanced ∧ r.isBalanced ∧
-    Int.natAbs ((l.height : Int) - (r.height : Int)) ≤ 1
-
-def BinTree.nodeCount : BinTree α → Nat
-  | .empty => 0
-  | .node _ l r => 1 + l.nodeCount + r.nodeCount
-
 -- `hoge ∈ hbalTreeNodees 7` が真でなければならないが、今そうなっていない
 #guard hoge.nodeCount = 7
-#guard hoge.isBalanced = true
+#guard hoge.isCompletelyBalanced = true
+#guard hoge.isHeightBalanced = true
+#guard hoge ∈ hbalTreeNodes 7
+
+/-
+## 問題文の実行例との比較
+-/
 
 #eval hbalTreeNodes 15
 #guard (hbalTreeNodes 15 |>.length) = 1553
