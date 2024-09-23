@@ -66,19 +66,20 @@ def BinTree.height (t : BinTree α) : Nat :=
   | .empty => 0
   | .node _ l r => 1 + max l.height r.height
 
+def BinTree.nodeCount : BinTree α → Nat
+  | .empty => 0
+  | .node _ l r => 1 + l.nodeCount + r.nodeCount
+
 def BinTree.isCompletelyBalanced {α : Type} : BinTree α → Bool
   | .empty => true
   | .node _ l r =>
     l.isCompletelyBalanced ∧ r.isCompletelyBalanced ∧
-    Int.natAbs ((l.height : Int) - (r.height : Int)) ≤ 1
+    Int.natAbs ((l.nodeCount : Int) - (r.nodeCount : Int)) ≤ 1
 
 def BinTree.isHeightBalanced {α : Type} : BinTree α → Bool
   | .empty => true
   | .node _ l r => Int.natAbs ((l.height : Int) - (r.height : Int)) ≤ 1
 
-def BinTree.nodeCount : BinTree α → Nat
-  | .empty => 0
-  | .node _ l r => 1 + l.nodeCount + r.nodeCount
 
 /-- construct all balanced binary trees which contains `x` elements -/
 partial def cbalTree (x : Nat) : List (BinTree Unit) :=
@@ -109,6 +110,9 @@ def List.product (as : List α) (bs : List β) : List (α × β) := do
 
 -- ノード数を固定した時のcbalTreeの高さは全部一緒(要証明)なので、最大値も最小値も一緒っぽい (maxHeightの話)
 
+/--
+completely balanced binary treeのうち，高さがheightの木のノード数の最小値
+-/
 def minNodes (height : Nat) : Nat := if height > 0 then 2 ^ (height - 1) else 0
 
 #guard minNodes 1 = 1
@@ -116,6 +120,9 @@ def minNodes (height : Nat) : Nat := if height > 0 then 2 ^ (height - 1) else 0
 #guard minNodes 4 = 8
 #guard minNodes 5 = 16
 
+/--
+completely balanced binary treeのうち，高さがheightの木のノード数の最大値
+-/
 def maxHeight (nodeCount : Nat) : Nat := Nat.log2 nodeCount + 1
 
 -- maxHeight ∘ minNodes = id は成り立ちそう
@@ -174,7 +181,17 @@ def hbalTreeNodes (nodeCount : Nat) : List (BinTree Unit) :=
     1. minHeightとmaxHeightを出して、[minHeight, .. , maxHeight]のリストを作る
     2. `hbalTrees`(高さ平衡木を全列挙する関数)から要素数が`nodeCount`なものだけをfilterする
   -/
-  sorry
+  let minHeight := Nat.log2 nodeCount + 1
+  dbg_trace "minHeight: {minHeight}"
+  let maxHeight := (nodeCount) / 2 + 1
+  dbg_trace "maxHeight: {maxHeight}"
+  do
+    let h ← List.range (maxHeight + 1)|>.drop (minHeight)
+    -- heightがh, nodeCountがnodeCountの木を全列挙
+    (hbalTrees h).filter (·.nodeCount = nodeCount)
+
+#eval hbalTreeNodes 5
+#eval (hbalTreeNodes 5).length
 
 /-- ノード数が7のheight-balancedな木 -/
 def hoge :=
@@ -190,8 +207,12 @@ def hoge :=
 ## 問題文の実行例との比較
 -/
 
-#eval hbalTreeNodes 15
-#guard (hbalTreeNodes 15 |>.length) = 1553
+-- #eval hbalTreeNodes 15
+-- #guard (hbalTreeNodes 15 |>.length) = 1553
+#eval hbalTreeNodes 0
+#eval hbalTreeNodes 1
+#eval hbalTreeNodes 2
+#eval hbalTreeNodes 3
 
 #guard (List.range 4 |>.map hbalTreeNodes) = [
   [.empty],
