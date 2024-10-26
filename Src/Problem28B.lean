@@ -4,21 +4,8 @@
 -/
 variable {α : Type}
 
-/-- Insert an element in a way that
-does not break the order of the sorted list. -/
-def orderedInsert (a : α) (ord : α → Nat) : List α → List α
-  | [] => [a]
-  | b :: l =>
-    if ord a ≤ ord b then a :: b :: l
-    else b :: orderedInsert a ord l
-
-/-- insertion sort -/
-def insertionSort (ord : α → Nat) : List α → List α
-  | [] => []
-  | b :: l => orderedInsert b ord <| insertionSort ord l
-
 -- You can use this!
-#check insertionSort
+#check List.mergeSort
 --#--
 /-- Count the number of lists in list `l` that have the same length as `target` -/
 def makeToLengthFreq (l : List (List α)) (target : List α) : Nat :=
@@ -28,7 +15,7 @@ def makeToLengthFreq (l : List (List α)) (target : List α) : Nat :=
 
 def lfsort (l : List (List α)) : List (List α) :=
   -- sorry
-  insertionSort (makeToLengthFreq l) l
+  List.mergeSort l (fun t s => makeToLengthFreq l t ≤ makeToLengthFreq l s)
   -- sorry
 
 -- The following codes are for test and you should not edit these.
