@@ -10,24 +10,29 @@ inductive BinTree (α : Type) where
 
 def leaf {α : Type} (a : α) : BinTree α := .node a .empty .empty
 
-variable {α : Type} [ToString α]
+variable {α : Type}
 
-def String.addIndent (s : String) (depth : Nat) : String :=
-  Nat.repeat (fun s => " " ++ s) depth s
+section
+  /- pretty print of binary tree -/
+  variable [ToString α]
 
-def BinTree.toString (tree : BinTree α) : String :=
-  aux tree 2
-where
-  aux (tree : BinTree α) (depth : Nat) : String :=
-    match tree with
-    | .node v .empty .empty => s!"leaf {v}"
-    | .node v l r =>
-      let ls := aux l (depth + 2)
-      let rs := aux r (depth + 2)
-      s!".node {v}\n" ++ s!"{ls}\n".addIndent depth ++ s!"{rs}\n".addIndent depth
-    | .empty => "empty"
+  def String.addIndent (s : String) (depth : Nat) : String :=
+    Nat.repeat (fun s => " " ++ s) depth s
 
-instance {α : Type} [ToString α] : ToString (BinTree α) := ⟨BinTree.toString⟩
+  def BinTree.toString (tree : BinTree α) : String :=
+    aux tree 2
+  where
+    aux (tree : BinTree α) (depth : Nat) : String :=
+      match tree with
+      | .node v .empty .empty => s!"leaf {v}"
+      | .node v l r =>
+        let ls := aux l (depth + 2)
+        let rs := aux r (depth + 2)
+        s!".node {v}\n" ++ s!"{ls}\n".addIndent depth ++ s!"{rs}\n".addIndent depth
+      | .empty => "empty"
+
+  instance {α : Type} [ToString α] : ToString (BinTree α) := ⟨BinTree.toString⟩
+end
 
 #eval BinTree.node 3 (.node 2 (leaf 1) .empty) (.node 5 .empty (leaf 7))
 
