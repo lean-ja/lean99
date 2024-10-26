@@ -38,7 +38,7 @@ def BinTree.max [Ord α] (t : BinTree α) : Option α :=
   | .node v l r =>
     let left_max := (max l).getD v
     let right_max := (max r).getD v
-    some <| [v, left_max, right_max].foldl Max.max v
+    some <| [left_max, right_max].foldl Max.max v
 
 def BinTree.searchTree [Ord α] (t : BinTree α) : Bool :=
   -- sorry
