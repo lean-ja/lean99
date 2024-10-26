@@ -4,15 +4,15 @@
 
 # 1-10: Lists
 
-* [1: Find the last element](./build/Problem1.md)
-* [2: Find the second-last element](./build/Problem2.md)
-* [3: Find the K'th element](./build/Problem3.md)
-* [4: Find the number of elements](./build/Problem4.md)
-* [5: Reverse a list](./build/Problem5.md)
-* [6: Detect palindrome](./build/Problem6.md)
-* [7: Flatten a nested list](./build/Problem7.md)
-* [8: Eliminate consecutive duplicates](./build/Problem8.md)
-* [9: Pack consecutive duplicates](./build/Problem9.md)
+* [1: Find the last element](./build/Problem01.md)
+* [2: Find the second-last element](./build/Problem02.md)
+* [3: Find the K'th element](./build/Problem03.md)
+* [4: Find the number of elements](./build/Problem04.md)
+* [5: Reverse a list](./build/Problem05.md)
+* [6: Detect palindrome](./build/Problem06.md)
+* [7: Flatten a nested list](./build/Problem07.md)
+* [8: Eliminate consecutive duplicates](./build/Problem08.md)
+* [9: Pack consecutive duplicates](./build/Problem09.md)
 * [10: Run-length encoding](./build/Problem10.md)
 
 # 11-20: Lists, continued
