@@ -4,6 +4,10 @@
 In a completely balanced binary tree, the following property holds for every node: The number of nodes in its left subtree and the number of nodes in its right subtree are almost equal, which means their difference is not greater than one.
 
 Write a function `cbalTree` to construct completely balanced binary trees for a given number of nodes. The predicate should generate all solutions via backtracking.
+
+> **warning**
+>
+> A completely balanced binary tree is not the same as a (hight) balanced binary tree.
 -/
 
 inductive BinTree (α : Type) where
@@ -13,15 +17,14 @@ deriving Repr
 
 def leaf {α : Type} (a : α) : BinTree α := .node a .empty .empty
 
-def BinTree.depth {α : Type} : BinTree α → Nat
+def BinTree.nodes {α : Type} : BinTree α → Nat
 | .empty => 0
-| .node _ l r => 1 + max l.depth r.depth
+| .node _ l r => 1 + l.nodes + r.nodes
 
-def BinTree.isBalanced {α : Type} : BinTree α → Bool
+def BinTree.isCBalanced {α : Type} : BinTree α → Bool
   | .empty => true
   | .node _ l r =>
-    l.isBalanced ∧ r.isBalanced ∧
-    Int.natAbs ((l.depth : Int) - (r.depth : Int)) ≤ 1
+    Int.natAbs ((l.nodes : Int) - (r.nodes : Int)) ≤ 1 && l.isCBalanced && r.isCBalanced
 
 /-- monad instance of `List` -/
 instance : Monad List where
@@ -29,7 +32,7 @@ instance : Monad List where
   bind := @List.bind
   map := @List.map
 
-/-- construct all balanced binary trees which contains `x` elements -/
+/-- construct all completely balanced binary trees which contains `x` elements -/
 partial def cbalTree (x : Nat) : List (BinTree Unit) :=
   -- sorry
   match x with
@@ -47,9 +50,9 @@ partial def cbalTree (x : Nat) : List (BinTree Unit) :=
 -- The following codes are for test and you should not edit these.
 
 #eval (cbalTree 3).length = 1
-#eval (cbalTree 3)|>.map BinTree.isBalanced |>.and
-#eval (cbalTree 4)|>.map BinTree.isBalanced |>.and
+#eval (cbalTree 3)|>.map BinTree.isCBalanced |>.and
+#eval (cbalTree 4)|>.map BinTree.isCBalanced |>.and
 #eval (cbalTree 4).length = 4
-#eval (cbalTree 5)|>.map BinTree.isBalanced |>.and
-#eval (cbalTree 6)|>.map BinTree.isBalanced |>.and
+#eval (cbalTree 5)|>.map BinTree.isCBalanced |>.and
+#eval (cbalTree 6)|>.map BinTree.isCBalanced |>.and
 #eval (cbalTree 7).length = 1
