@@ -26,11 +26,17 @@ def BinTree.isCBalanced {α : Type} : BinTree α → Bool
   | .node _ l r =>
     Int.natAbs ((l.nodes : Int) - (r.nodes : Int)) ≤ 1 && l.isCBalanced && r.isCBalanced
 
+namespace ListMonad
+
 /-- monad instance of `List` -/
-instance : Monad List where
-  pure := @List.pure
-  bind := @List.bind
+scoped instance : Monad List where
+  pure := fun {_} a => [a]
+  bind := @List.flatMap
   map := @List.map
+
+end ListMonad
+
+open scoped ListMonad
 
 /-- construct all completely balanced binary trees which contains `x` elements -/
 partial def cbalTree (x : Nat) : List (BinTree Unit) :=

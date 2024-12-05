@@ -8,12 +8,17 @@ Write a function that generates all the possibilities and returns them in a list
 universe u
 variable {α : Type}
 
-/-- `List` is a Monad.
-Since Lean does not use lazy evaluation, no Monad instance of List is defined in the Lean standard library for performance reasons. -/
-instance : Monad List.{u} where
-  pure := @List.pure
-  bind := @List.bind
+namespace ListMonad
+
+/-- monad instance of `List` -/
+scoped instance : Monad List where
+  pure := fun {_} a => [a]
+  bind := @List.flatMap
   map := @List.map
+
+end ListMonad
+
+open scoped ListMonad
 
 def List.split (n : Nat) (xs : List α) : List (List α × List α) :=
   -- sorry

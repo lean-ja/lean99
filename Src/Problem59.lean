@@ -19,11 +19,17 @@ def BinTree.height (t : BinTree α) : Nat :=
   | .empty => 0
   | .node _ l r => 1 + max l.height r.height
 
+namespace ListMonad
+
 /-- monad instance of `List` -/
-instance : Monad List where
-  pure := @List.pure
-  bind := @List.bind
+scoped instance : Monad List where
+  pure := fun {_} a => [a]
+  bind := @List.flatMap
   map := @List.map
+
+end ListMonad
+
+open scoped ListMonad
 
 /-- construct all balanced binary trees which contains `x` elements -/
 partial def cbalTree (x : Nat) : List (BinTree Unit) :=

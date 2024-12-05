@@ -5,11 +5,17 @@ Generalize Problem 47 in such a way that the logical expression may contain any 
 -/
 universe u
 
+namespace ListMonad
+
 /-- monad instance of `List` -/
-instance : Monad List.{u} where
-  pure := @List.pure
-  bind := @List.bind
+scoped instance : Monad List.{u} where
+  pure := fun {_} a => [a]
+  bind := @List.flatMap
   map := @List.map
+
+end ListMonad
+
+open scoped ListMonad
 
 def Arity : (n : Nat) → Type
   | 0 => Bool
