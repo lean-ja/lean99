@@ -9,9 +9,9 @@ namespace ListMonad
 
 /-- monad instance of `List` -/
 scoped instance : Monad List.{u} where
-  pure := @List.singleton
-  bind := @List.flatMap
-  map := @List.map
+  pure := List.singleton
+  bind := List.flatMap
+  map := List.map
 
 end ListMonad
 
