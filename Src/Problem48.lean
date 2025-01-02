@@ -9,7 +9,7 @@ namespace ListMonad
 
 /-- monad instance of `List` -/
 scoped instance : Monad List.{u} where
-  pure := fun {_} a => [a]
+  pure := @List.singleton
   bind := @List.flatMap
   map := @List.map
 
