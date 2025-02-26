@@ -21,3 +21,4 @@ jobs:
           on_update_succeeds: pr
           # Allowed values: "silent", "issue" or "fail". Default: "issue".
           on_update_fails: issue
+          what_to_update: lean-toolchain
