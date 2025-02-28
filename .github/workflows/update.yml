@@ -17,8 +17,6 @@ jobs:
       - name: Update Lean project
         uses: Seasawher/lean-update@main # 自前のアクションを使用する
         with:
-          #  Allowed values: "silent", "commit", "issue" or "pr". Default: "commit".
           on_update_succeeds: pr
-          # Allowed values: "silent", "issue" or "fail". Default: "issue".
           on_update_fails: issue
-          what_to_update: lean-toolchain
+          update_if_modified: lean-toolchain
