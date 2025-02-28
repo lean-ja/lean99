@@ -7,10 +7,10 @@ on:
 jobs:
   update_lean:
     runs-on: ubuntu-latest
-    permissions:
-      issues: write
-      pull-requests: write
-      contents: write
+    # permissions:
+    #   issues: write
+    #   pull-requests: write
+    #   contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
